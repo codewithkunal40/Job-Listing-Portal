@@ -5,6 +5,7 @@ import connectDB from "./config/db.js";
 import morgan from "morgan";
 import testRoute from "./routes/testRoutes.js";
 import cors from "cors";
+import authRoutes from "./routes/authRoutes.js";
 //dotenv config
 dotenv.config();
 
@@ -21,6 +22,7 @@ app.use(morgan("dev"));
 
 //routes
 app.use("/api/v1/test", testRoute);
+app.use("/api/v1/auth", authRoutes);
 
 const PORT = process.env.PORT || 8080;
 
