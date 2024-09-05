@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 import validator from "validator";
+import JWT from "jsonwebtoken";
 // user schema fro job prtal
 const userSchema = new mongoose.Schema(
   {
@@ -17,6 +18,7 @@ const userSchema = new mongoose.Schema(
       required: [true, "User Email is required"],
       unique: true,
       validate: validator.isEmail,
+      select: true,
     },
     password: {
       type: String,
@@ -45,4 +47,11 @@ userSchema.pre("save", async function () {
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
 });
+
+// jwt token
+userSchema.methods.createJWT = function () {
+  return JWT.sign({ userId: this._id }, process.env.JWT_SECRET, {
+    expiresIn: "1d",
+  });
+};
 export default mongoose.model("User", userSchema);

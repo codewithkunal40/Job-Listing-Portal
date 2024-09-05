@@ -1,67 +1,82 @@
 import userModel from "../models/userModel.js";
 
-export const regsiterController = async (req, res, next) => {
+export const registerController = async (req, res, next) => {
   try {
     const { name, lastName, password, phoneNumber, location, email, role } =
       req.body;
+
+    // Validation checks for required fields
     if (!name) {
       return res.status(400).send({
         success: false,
-        message: "Name is not provided",
+        message: "Name is required",
       });
     }
     if (!email) {
       return res.status(400).send({
         success: false,
-        message: "Email is not provided",
+        message: "Email is required",
       });
     }
     if (!password) {
       return res.status(400).send({
         success: false,
-        message: "Password is not provided",
+        message: "Password is required",
       });
     }
     if (!phoneNumber) {
       return res.status(400).send({
         success: false,
-        message: "contact number not provided is not provided",
+        message: "Phone number is required",
       });
     }
     if (!location) {
       return res.status(400).send({
         success: false,
-        message: "location is not provided",
+        message: "Location is required",
       });
     }
     if (!lastName) {
       return res.status(400).send({
         success: false,
-        message: "lastname is not provided",
-      });
-    }
-    // /for exiting user
-    const existingUser = await userModel.findOne({ email });
-    if (existingUser) {
-      return res.status(200).send({
-        success: false,
-        message: "email already exists please login",
+        message: "Last name is required",
       });
     }
 
+    // Check if the user already exists
+    const existingUser = await userModel.findOne({ email });
+    if (existingUser) {
+      return res.status(400).send({
+        success: false,
+        message: "Email already exists. Please login.",
+      });
+    }
+
+    // Create new user
     const user = await userModel.create({
-      email,
-      password,
-      lastName,
       name,
-      location,
+      lastName,
+      password,
       phoneNumber,
+      location,
+      email,
       role,
     });
+
+    const token = user.createJWT();
+
+    // Send success response
     res.status(201).send({
       success: true,
-      message: "USer created Succesfully",
-      user,
+      message: "User created successfully",
+      user: {
+        email: user.email,
+        lastName: user.lastName,
+        name: user.name,
+        role: user.role,
+        location: user.location,
+      },
+      token,
     });
   } catch (error) {
     next(error);
