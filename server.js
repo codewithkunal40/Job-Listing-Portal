@@ -21,8 +21,14 @@ app.use(cors());
 app.use(morgan("dev"));
 
 //routes
+<<<<<<< Updated upstream
 app.use("/api/v1/test", testRoute);
 app.use("/api/v1/auth", authRoutes);
+=======
+app.get("/",(req,res) => {
+  res.send("<h1>Welcome to Job Application</h1>");
+})
+>>>>>>> Stashed changes
 
 const PORT = process.env.PORT || 8080;
 
