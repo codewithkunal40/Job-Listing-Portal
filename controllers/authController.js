@@ -82,3 +82,34 @@ export const registerController = async (req, res, next) => {
     next(error);
   }
 };
+
+// login controller
+export const loginController = async (req, res, next) => {
+  try {
+    const { name, email, password } = req.body;
+    if (!name || !email || !password) {
+      return res.status(400).send({
+        success: false,
+        message: "Error in login crdentails please login again",
+      });
+    }
+
+    const user = await userModel.find({ email, name });
+    const isMatch = await user.comparePassword(password);
+    if (!isMatch) {
+      next("Invalid username or password");
+    }
+    return res.status(200).send({
+      success: true,
+      message: "User login succesfully!!",
+      user,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Soemthing went wrng during login",
+      error,
+    });
+  }
+};
