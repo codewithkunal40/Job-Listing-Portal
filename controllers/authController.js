@@ -1,6 +1,6 @@
 import userModel from "../models/userModel.js";
 
-export const regsiterController = async (req, res) => {
+export const regsiterController = async (req, res, next) => {
   try {
     const { name, lastName, password, phoneNumber, location, email, role } =
       req.body;
@@ -45,7 +45,7 @@ export const regsiterController = async (req, res) => {
     if (existingUser) {
       return res.status(200).send({
         success: false,
-        message: "email already exists",
+        message: "email already exists please login",
       });
     }
 
@@ -64,11 +64,6 @@ export const regsiterController = async (req, res) => {
       user,
     });
   } catch (error) {
-    console.log(error);
-    res.status(500).send({
-      success: false,
-      message: "Error in regsitration byt the user",
-      error,
-    });
+    next(error);
   }
 };
