@@ -36,7 +36,7 @@ export const registerController = async (req, res, next) => {
         message: "Location is required",
       });
     }
-    if (!lastName) {
+    if (!lastname) {
       return res.status(400).send({
         success: false,
         message: "Last name is required",
