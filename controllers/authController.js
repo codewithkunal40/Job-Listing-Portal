@@ -94,15 +94,18 @@ export const loginController = async (req, res, next) => {
       });
     }
 
-    const user = await userModel.find({ email, name });
+    const user = await userModel.findOne({ email, name });
     const isMatch = await user.comparePassword(password);
     if (!isMatch) {
       next("Invalid username or password");
     }
+    user.password = undefined;
+    const token = user.createJWT();
     return res.status(200).send({
       success: true,
       message: "User login succesfully!!",
       user,
+      token,
     });
   } catch (error) {
     console.log(error);
