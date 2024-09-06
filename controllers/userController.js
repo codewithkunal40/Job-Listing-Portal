@@ -54,3 +54,79 @@ export const updateUserController = async (req, res, next) => {
     });
   }
 };
+
+// get the user
+
+export const getUserController = async (req, res) => {
+  try {
+    const users = await userModel.find({});
+    return res.status(200).send({
+      success: true,
+      message: "Fetched the users successfully",
+      users, // Use 'users' here instead of 'user' to reflect that it returns a list
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Something went wrong during fetching",
+      error: error.message, // Send only the error message for security reasons
+    });
+  }
+};
+
+export const getUserOnIdController = async (req, res) => {
+  try {
+    const userId = req.body._id;
+    const user = await userModel.findOne({ userId });
+    return res.status(200).send({
+      success: true,
+      message: "User fetched on the basis of Id",
+      user,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Caanot fetch the current user",
+      error,
+    });
+  }
+};
+
+// delete user controller
+
+export const deleteUserController = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    if (!id) {
+      return res.status(400).send({
+        success: false,
+        message: "User ID is required",
+      });
+    }
+
+    const user = await userModel.findByIdAndDelete(id);
+
+    if (!user) {
+      return res.status(404).send({
+        success: false,
+        message: "User not found",
+      });
+    }
+
+    return res.status(200).send({
+      success: true,
+      message: "User deleted successfully",
+      user,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Something went wrong",
+      error: error.message, // Send only the error message for security reasons
+    });
+  }
+};
