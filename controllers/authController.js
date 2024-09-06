@@ -55,7 +55,7 @@ export const registerController = async (req, res, next) => {
     // Create new user
     const user = await userModel.create({
       name,
-      lastName,
+      lastname,
       password,
       phoneNumber,
       location,
