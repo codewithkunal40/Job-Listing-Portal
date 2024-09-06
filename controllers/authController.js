@@ -2,7 +2,7 @@ import userModel from "../models/userModel.js";
 
 export const registerController = async (req, res, next) => {
   try {
-    const { name, lastName, password, phoneNumber, location, email, role } =
+    const { name, lastname, password, phoneNumber, location, email, role } =
       req.body;
 
     // Validation checks for required fields
