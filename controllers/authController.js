@@ -86,32 +86,56 @@ export const registerController = async (req, res, next) => {
 // login controller
 export const loginController = async (req, res, next) => {
   try {
-    const { name, email, password } = req.body;
-    if (!name || !email || !password) {
+    const { email, password } = req.body;
+
+    // Check if email and password are provided
+    if (!email || !password) {
       return res.status(400).send({
         success: false,
-        message: "Error in login crdentails please login again",
+        message: "Email and password are required",
       });
     }
 
-    const user = await userModel.findOne({ email, name });
-    const isMatch = await user.comparePassword(password);
-    if (!isMatch) {
-      next("Invalid username or password");
+    // Find the user by email
+    const user = await userModel.findOne({ email });
+
+    // If user is not found
+    if (!user) {
+      return res.status(400).send({
+        success: false,
+        message: "User not found",
+      });
     }
+
+    // Compare the entered password with the hashed password in the database
+    const isMatch = await user.comparePassword(password);
+
+    // If the password does not match
+    if (!isMatch) {
+      return res.status(400).send({
+        success: false,
+        message: "Invalid password",
+      });
+    }
+
+    // Exclude the password from the response
     user.password = undefined;
+
+    // Generate a JWT token
     const token = user.createJWT();
+
+    // Send success response
     return res.status(200).send({
       success: true,
-      message: "User login succesfully!!",
+      message: "User logged in successfully!",
       user,
       token,
     });
   } catch (error) {
     console.log(error);
-    res.status(500).send({
+    return res.status(500).send({
       success: false,
-      message: "Soemthing went wrng during login",
+      message: "Something went wrong during login",
       error,
     });
   }

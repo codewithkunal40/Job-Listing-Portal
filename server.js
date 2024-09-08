@@ -10,8 +10,8 @@ import testRoute from "./routes/testRoutes.js";
 import cors from "cors";
 import authRoutes from "./routes/authRoutes.js";
 import errorMiddleware from "./middlewares/errorMiddleware.js";
-import userRoutes from './routes/userRoutes.js';
-import jobsRoutes from './routes/jobsRoutes.js';
+import userRoutes from "./routes/userRoutes.js";
+import jobsRoutes from "./routes/jobsRoutes.js";
 //dotenv config
 dotenv.config();
 
@@ -31,7 +31,7 @@ app.use(morgan("dev"));
 app.use("/api/v1/test", testRoute);
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/user", userRoutes);
-app.use("/api/v1/job",jobsRoutes);
+app.use("/api/v1/job", jobsRoutes);
 
 // middleware for the validayion
 app.use(errorMiddleware);
