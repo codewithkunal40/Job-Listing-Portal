@@ -7,19 +7,154 @@ import {
   updateUserController,
 } from "../controllers/userController.js";
 
-//router object
 const router = express.Router();
 
-//UPDATE USER || PUT
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     User:
+ *       type: object
+ *       required:
+ *         - name
+ *         - email
+ *       properties:
+ *         name:
+ *           type: string
+ *           description: The name of the user.
+ *           example: John Doe
+ *         email:
+ *           type: string
+ *           description: The email address of the user.
+ *           example: john.doe@example.com
+ *         password:
+ *           type: string
+ *           description: The password for the user account.
+ *           example: securepassword123
+ *         role:
+ *           type: string
+ *           description: The role of the user (e.g., admin, user).
+ *           example: admin
+ *       example:
+ *         name: John Doe
+ *         email: john.doe@example.com
+ *         password: securepassword123
+ *         role: admin
+ */
+
+/**
+ * @swagger
+ * tags:
+ *   name: Users
+ *   description: User management operations
+ */
+
+/**
+ * @swagger
+ * /update-user:
+ *   put:
+ *     summary: Update user information
+ *     tags: [Users]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       description: User object with updated values
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/User'
+ *     responses:
+ *       200:
+ *         description: User updated successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/User'
+ *       400:
+ *         description: Bad request
+ *       401:
+ *         description: Unauthorized
+ */
+
+/**
+ * @swagger
+ * /get-user:
+ *   get:
+ *     summary: Get all users
+ *     tags: [Users]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: List of all users
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 users:
+ *                   type: array
+ *                   items:
+ *                     $ref: '#/components/schemas/User'
+ *       401:
+ *         description: Unauthorized
+ */
+
+/**
+ * @swagger
+ * /get-user/{id}:
+ *   get:
+ *     summary: Get a single user by ID
+ *     tags: [Users]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: User ID to retrieve
+ *     responses:
+ *       200:
+ *         description: User details
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/User'
+ *       404:
+ *         description: User not found
+ *       401:
+ *         description: Unauthorized
+ */
+
+/**
+ * @swagger
+ * /delete-user/{id}:
+ *   delete:
+ *     summary: Delete a user by ID
+ *     tags: [Users]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: User ID to delete
+ *     responses:
+ *       200:
+ *         description: User deleted successfully
+ *       404:
+ *         description: User not found
+ *       401:
+ *         description: Unauthorized
+ */
+
 router.put("/update-user", userAuth, updateUserController);
-
-// get all users
 router.get("/get-user", userAuth, getUserController);
-
-// get single user
 router.get("/get-user/:id", userAuth, getUserOnIdController);
-
-// delte the user on the basis of id
 router.delete("/delete-user/:id", userAuth, deleteUserController);
 
 export default router;
