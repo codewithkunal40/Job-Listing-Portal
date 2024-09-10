@@ -3,8 +3,8 @@ import jobsModel from "../models/jobsModel.js";
 
 // CREATE JOB
 export const createJobController = async (req, res, next) => {
-  const { company, position } = req.body;
-  if (!company || !position) {
+  const { company, position, qualification, salary, workLocation } = req.body;
+  if (!company || !position || !qualification || !salary || !workLocation) {
     return res
       .status(400)
       .json({ success: false, message: "Please provide all fields" });
@@ -60,9 +60,9 @@ export const getAllJobsController = async (req, res, next) => {
 // UPDATE JOB
 export const updateJobController = async (req, res, next) => {
   const { id } = req.params;
-  const { company, position } = req.body;
+  const { company, position, qualification, salary } = req.body;
 
-  if (!company || !position) {
+  if (!company || !position || !qualification || !salary) {
     return res
       .status(400)
       .json({ success: false, message: "Please provide all fields" });
