@@ -1,123 +1,132 @@
 import mongoose from "mongoose";
 import jobsModel from "../models/jobsModel.js";
 
-//CREATE JOB
-
+// CREATE JOB
 export const createJobController = async (req, res, next) => {
   const { company, position } = req.body;
   if (!company || !position) {
-    next("Please provide all fields");
+    return res
+      .status(400)
+      .json({ success: false, message: "Please provide all fields" });
   }
-  req.body.createdBy = req.user.userId;
-  const job = await jobsModel.create(req.body);
-  res.status(201).json({ job });
+  try {
+    req.body.createdBy = req.user.userId;
+    const job = await jobsModel.create(req.body);
+    res.status(201).json({ job });
+  } catch (error) {
+    next(error);
+  }
 };
 
-//=========GET JOBS ==========
-
+// GET ALL JOBS
 export const getAllJobsController = async (req, res, next) => {
   const { status, workType, search, sort } = req.query;
-  // conditon for sercing
+
   const queryObject = {
     createdBy: req.user.userId,
   };
-  // logic for filter
-  if (status && status !== "all") {
-    queryObject.status = status;
-  }
-  if (workType && workType !== "all") {
-    queryObject.workType = workType;
-  }
-  if (search) {
-    queryObject.position = { $regex: search, $options: "i" };
-  }
-  const queryResult = jobsModel.find(queryObject);
 
-  if (sort === "latest") {
-    queryResult = queryResult.sort("-createdAt");
+  // Filtering
+  if (status && status !== "all") queryObject.status = status;
+  if (workType && workType !== "all") queryObject.workType = workType;
+  if (search) queryObject.position = { $regex: search, $options: "i" };
+
+  try {
+    let queryResult = jobsModel.find(queryObject);
+
+    // Sorting
+    if (sort === "latest") queryResult = queryResult.sort("-createdAt");
+    if (sort === "a-z") queryResult = queryResult.sort("position");
+    if (sort === "oldest") queryResult = queryResult.sort("createdAt");
+    if (sort === "z-a") queryResult = queryResult.sort("-position");
+
+    // Pagination
+    const page = Number(req.query.page) || 1;
+    const limit = Number(req.query.limit) || 10;
+    const skip = (page - 1) * limit;
+
+    queryResult = queryResult.skip(skip).limit(limit);
+
+    const jobs = await queryResult;
+    const totalJobs = await jobsModel.countDocuments(queryObject);
+    const numOfPage = Math.ceil(totalJobs / limit);
+
+    res.status(200).json({ totalJobs, jobs, numOfPage });
+  } catch (error) {
+    next(error);
   }
-  if (sort === "a-z") {
-    queryResult = queryResult.sort("position");
-  }
-  if (sort === "oldest") {
-    queryResult = queryResult.sort("createdAt");
-  }
-  if (sort === "A-Z") {
-    queryResult = queryResult.sort("-position");
-  }
-  const jobs = await queryResult;
-  // const jobs = await jobsModel.find({ createdBy: req.userId });
-  res.status(200).json({
-    totalJobs: jobs.length,
-    jobs,
-  });
 };
 
-//========UPDATE JOBS ==========
+// UPDATE JOB
 export const updateJobController = async (req, res, next) => {
   const { id } = req.params;
   const { company, position } = req.body;
-  //validation
+
   if (!company || !position) {
-    next("Please Provide All Fields");
+    return res
+      .status(400)
+      .json({ success: false, message: "Please provide all fields" });
   }
-  //find job
-  const job = await jobsModel.findOne({ _id: id });
-  //validation
-  if (!job) {
-    next(`no jobs found with this id ${id}`);
+
+  try {
+    const job = await jobsModel.findOne({ _id: id });
+    if (!job) {
+      return res
+        .status(404)
+        .json({ success: false, message: `No job found with this id ${id}` });
+    }
+
+    if (req.user.userId !== job.createdBy.toString()) {
+      return res
+        .status(403)
+        .json({ message: "You are not authorized to update this job" });
+    }
+
+    const updatedJob = await jobsModel.findByIdAndUpdate(id, req.body, {
+      new: true,
+      runValidators: true,
+    });
+    res.status(200).json({ updatedJob });
+  } catch (error) {
+    next(error);
   }
-  if (!req.user.userId == job.createdBy.toString()) {
-    next("You are not authorized to update this job");
-    return;
-  }
-  const updateJob = await jobsModel.findOneAndUpdate({ _id: id }, req.body, {
-    new: true,
-    runValidators: true,
-  });
-  //res
-  res.status(200).json({ updateJob });
 };
 
-//======= DELETE JOBS =======
-
+// DELETE JOB
 export const deleteJobController = async (req, res, next) => {
   const { id } = req.params;
-  //find job
-  const job = await jobsModel.findOne({ _id: id });
-  //validation
-  if (!job) {
-    next(`No job found with this id ${id}`);
+
+  try {
+    const job = await jobsModel.findOne({ _id: id });
+    if (!job) {
+      return res
+        .status(404)
+        .json({ message: `No job found with this id ${id}` });
+    }
+
+    if (req.user.userId !== job.createdBy.toString()) {
+      return res
+        .status(403)
+        .json({ message: "You are not authorized to delete this job" });
+    }
+
+    await job.deleteOne();
+    res.status(200).json({ message: "Success, Job Deleted!" });
+  } catch (error) {
+    next(error);
   }
-  if (!req.user.userId === job.createdBy.toString()) {
-    next("You are not authorized to delete this job");
-    return;
-  }
-  await job.deleteOne();
-  res.status(200).json({ message: "Success,Job Deleted !" });
 };
 
-// job dtts and filet
-
+// JOB STATS
 export const jobStatsController = async (req, res) => {
   try {
-    // Extract filters from query parameters
     const { status, workType, workLocation } = req.query;
-
-    // Build the match object
     const match = { createdBy: new mongoose.Types.ObjectId(req.user.userId) };
 
-    if (status) {
-      match.status = status;
-    }
-    if (workType) {
-      match.workType = workType;
-    }
-    if (workLocation) {
-      match.workLocation = workLocation;
-    }
+    if (status) match.status = status;
+    if (workType) match.workType = workType;
+    if (workLocation) match.workLocation = workLocation;
 
-    // Define the aggregation pipeline for grouped stats
     const groupPipeline = [
       { $match: match },
       {
@@ -127,7 +136,7 @@ export const jobStatsController = async (req, res) => {
             workType: "$workType",
             workLocation: "$workLocation",
           },
-          count: { $sum: 1 }, // Count the number of jobs in each group
+          count: { $sum: 1 },
         },
       },
       {
@@ -141,7 +150,6 @@ export const jobStatsController = async (req, res) => {
       },
     ];
 
-    // Define the aggregation pipeline for monthly stats
     const monthlyStatsPipeline = [
       { $match: match },
       {
@@ -150,7 +158,7 @@ export const jobStatsController = async (req, res) => {
             year: { $year: "$createdAt" },
             month: { $month: "$createdAt" },
           },
-          count: { $sum: 1 }, // Count the number of jobs in each month
+          count: { $sum: 1 },
         },
       },
       {
@@ -172,16 +180,15 @@ export const jobStatsController = async (req, res) => {
           count: 1,
         },
       },
-      { $sort: { date: 1 } }, // Sort by formatted date
+      { $sort: { date: 1 } },
     ];
 
-    // Define the aggregation pipeline for yearly stats
     const yearlyStatsPipeline = [
       { $match: match },
       {
         $group: {
           _id: { year: { $year: "$createdAt" } },
-          count: { $sum: 1 }, // Count the number of jobs in each year
+          count: { $sum: 1 },
         },
       },
       {
@@ -191,27 +198,13 @@ export const jobStatsController = async (req, res) => {
           count: 1,
         },
       },
-      { $sort: { year: 1 } }, // Sort by year
+      { $sort: { year: 1 } },
     ];
 
-    // Perform the aggregation
     const groupedStats = await jobsModel.aggregate(groupPipeline);
     const monthlyStats = await jobsModel.aggregate(monthlyStatsPipeline);
     const yearlyStats = await jobsModel.aggregate(yearlyStatsPipeline);
 
-    // Default response if no filters applied
-    if (!status && !workType && !workLocation) {
-      return res.status(200).json({
-        success: true,
-        stats: {
-          grouped: groupedStats,
-          monthly: monthlyStats,
-          yearly: yearlyStats,
-        },
-      });
-    }
-
-    // Return filtered statistics
     res.status(200).json({
       success: true,
       stats: {
@@ -222,7 +215,7 @@ export const jobStatsController = async (req, res) => {
     });
   } catch (error) {
     console.error("Error fetching job stats:", error);
-    res.status(400).send({
+    res.status(400).json({
       success: false,
       message: "Something went wrong while fetching job stats",
       error: error.message,
