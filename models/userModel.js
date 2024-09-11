@@ -32,6 +32,10 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: [true, "phone NUmber is required"],
     },
+    resume: {
+      type: String,
+      required: false,
+    },
     role: {
       type: String,
       enum: ["job seeker", "employer"],

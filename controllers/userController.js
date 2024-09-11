@@ -1,5 +1,5 @@
 import userModel from "../models/userModel.js";
-
+import { uploadResume } from "../middlewares/resumeUpload.js";
 export const updateUserController = async (req, res, next) => {
   const { name, email, lastname, location, phoneNumber, role } = req.body;
 
@@ -63,14 +63,14 @@ export const getUserController = async (req, res) => {
     return res.status(200).send({
       success: true,
       message: "Fetched the users successfully",
-      users, // Use 'users' here instead of 'user' to reflect that it returns a list
+      users,
     });
   } catch (error) {
     console.log(error);
     res.status(500).send({
       success: false,
       message: "Something went wrong during fetching",
-      error: error.message, // Send only the error message for security reasons
+      error: error.message,
     });
   }
 };
@@ -128,5 +128,30 @@ export const deleteUserController = async (req, res) => {
       message: "Something went wrong",
       error: error.message, // Send only the error message for security reasons
     });
+  }
+};
+
+// Resume upload controller
+export const uploadResumeController = async (req, res) => {
+  try {
+    const userId = req.user.userId; // Assuming you have user authentication middleware
+    const resumePath = req.file.path; // Multer gives the path of the uploaded file
+
+    // Find the user and update the resume field
+    const user = await userModel.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    user.resume = resumePath; // Set the path of the uploaded resume
+    await user.save();
+
+    return res.status(200).json({
+      message: "Resume uploaded successfully",
+      resume: resumePath,
+    });
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
   }
 };

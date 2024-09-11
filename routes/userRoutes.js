@@ -5,7 +5,9 @@ import {
   getUserController,
   getUserOnIdController,
   updateUserController,
+  uploadResumeController,
 } from "../controllers/userController.js";
+import { uploadResume } from "../middlewares/resumeUpload.js";
 
 const router = express.Router();
 
@@ -155,6 +157,7 @@ const router = express.Router();
 router.put("/update-user", userAuth, updateUserController);
 router.get("/get-user", userAuth, getUserController);
 router.get("/get-user/:id", userAuth, getUserOnIdController);
+router.post("/upload-resume", uploadResume, userAuth, uploadResumeController);
 router.delete("/delete-user/:id", userAuth, deleteUserController);
 
 export default router;
