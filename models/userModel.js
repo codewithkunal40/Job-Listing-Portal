@@ -2,7 +2,8 @@ import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 import validator from "validator";
 import JWT from "jsonwebtoken";
-// user schema for job portal
+
+// User schema for job portal
 const userSchema = new mongoose.Schema(
   {
     name: {
@@ -11,18 +12,18 @@ const userSchema = new mongoose.Schema(
     },
     lastname: {
       type: String,
-      required: [true, "Last Nam is  required"],
+      required: [true, "Last Name is required"],
     },
     email: {
       type: String,
       required: [true, "User Email is required"],
       unique: true,
-      validate: validator.isEmail,
+      validate: [validator.isEmail, "Please provide a valid email"],
       select: true,
     },
     password: {
       type: String,
-      required: [true, "password is required"],
+      required: [true, "Password is required"],
     },
     location: {
       type: String,
@@ -30,7 +31,7 @@ const userSchema = new mongoose.Schema(
     },
     phoneNumber: {
       type: String,
-      required: [true, "phone NUmber is required"],
+      required: [true, "Phone Number is required"],
     },
     resume: {
       type: String,
@@ -46,22 +47,29 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-// middle ware
-userSchema.pre("save", async function () {
-  if (!this.isModified) return;
-  const salt = await bcrypt.genSalt(10);
-  this.password = await bcrypt.hash(this.password, salt);
+// Middleware to hash password before saving user
+userSchema.pre("save", async function (next) {
+  if (!this.isModified("password")) return next();
+
+  try {
+    const salt = await bcrypt.genSalt(10);
+    this.password = await bcrypt.hash(this.password, salt);
+    next();
+  } catch (error) {
+    next(error);
+  }
 });
 
-// compare password
+// Method to compare entered password with stored hashed password
 userSchema.methods.comparePassword = async function (userPassword) {
-  const isMatch = await bcrypt.compare(userPassword, this.password);
-  return isMatch;
+  return await bcrypt.compare(userPassword, this.password);
 };
-// jwt token
+
+// Method to create JWT token
 userSchema.methods.createJWT = function () {
   return JWT.sign({ userId: this._id }, process.env.JWT_SECRET, {
     expiresIn: "1d",
   });
 };
+
 export default mongoose.model("User", userSchema);
