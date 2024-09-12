@@ -6,10 +6,8 @@
   padding: 15px 50px;
   background-color: #0d1117; /* Darker background for premium feel */
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6); /* Strong shadow for depth */
-  position: fixed;
-  width: 100%;
-  top: 0;
   z-index: 1000;
+  width: 100%;
   font-family: "Poppins", sans-serif;
   transition: background-color 0.4s ease;
 }

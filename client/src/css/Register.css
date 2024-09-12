@@ -1,0 +1,161 @@
+/* Register Page Styling */
+.register-wrapper {
+  background: linear-gradient(
+    135deg,
+    #003366,
+    #000000
+  ); /* Matching background gradient */
+  display: flex;
+  flex-direction: column;
+  /* Center content vertically */
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  padding: 20px;
+}
+
+.register-form-container {
+  background-color: white;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Similar shadow to login */
+  max-width: 450px;
+  width: 100%;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.register-form-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.register-title {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #003366;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Form Item Styling */
+.form-item {
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.form-label {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #333;
+  letter-spacing: 0.5px;
+}
+
+.form-input,
+.form-select {
+  width: 100%;
+  padding: 14px;
+  margin-top: 8px;
+  font-size: 1.1rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-input:focus,
+.form-select:focus {
+  border-color: #00aaff;
+  outline: none;
+  box-shadow: 0 4px 8px rgba(0, 170, 255, 0.2);
+}
+
+/* Primary Button Styling */
+.register-btn-primary {
+  width: 100%;
+  padding: 14px;
+  font-size: 1.3rem;
+  background: linear-gradient(135deg, #00aaff, #0066cc);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.register-btn-primary:hover {
+  background: linear-gradient(135deg, #0088ff, #005bb5);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 88, 179, 0.3);
+}
+
+/* Secondary Button Styling */
+.register-btn-secondary {
+  padding: 10px 20px;
+  font-size: 1.1rem;
+  background: #fca311;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.register-btn-secondary:hover {
+  background-color: #ff6700;
+  transform: translateY(-2px);
+}
+
+/* Login Link Styling */
+.login-link-container {
+  margin-top: 20px;
+}
+
+.login-link-container p {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .register-form-container {
+    padding: 25px;
+    max-width: 90%;
+  }
+
+  .register-title {
+    font-size: 2rem;
+  }
+
+  .form-input,
+  .form-select {
+    padding: 12px;
+    font-size: 1rem;
+  }
+
+  .register-btn-primary {
+    font-size: 1.1rem;
+    padding: 12px;
+  }
+
+  .register-btn-secondary {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .register-title {
+    font-size: 1.7rem;
+  }
+
+  .form-input,
+  .form-select {
+    padding: 10px;
+    font-size: 0.95rem;
+  }
+
+  .register-btn-primary {
+    font-size: 1rem;
+    padding: 10px;
+  }
+}

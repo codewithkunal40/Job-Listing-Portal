@@ -3,6 +3,8 @@ import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import "../css/Login.css";
+import Navbar from "../components/Navbar";
+
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const navigate = useNavigate();
@@ -14,7 +16,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const token = localStorage.getItem("token"); // Retrieve token from localStorage
+      const token = localStorage.getItem("token");
       const res = await axios.post("/api/v1/auth/login", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -34,14 +36,13 @@ const Login = () => {
   };
 
   return (
-    <div className="form-container">
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          
-          <div class="form-group">
-
-          <label>Email</label>
+    <div className="login-page">
+      <Navbar />
+      <div className="form-container">
+        <h2>Login</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label>Email</label>
             <input
               type="email"
               name="email"
@@ -49,13 +50,9 @@ const Login = () => {
               onChange={handleChange}
               required
             />
-          
-            </div>
-            
           </div>
-          <div>
-          <div class="form-group">
-          <label>Password</label>
+          <div className="form-group">
+            <label>Password</label>
             <input
               type="password"
               name="password"
@@ -63,12 +60,12 @@ const Login = () => {
               onChange={handleChange}
               required
             />
-            
-          
-        </div>
-        <button type="submit">Login</button>
-        </div>
-      </form>
+          </div>
+          <button type="submit" className="btn-primary">
+            Login
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

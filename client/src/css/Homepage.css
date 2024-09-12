@@ -2,7 +2,7 @@
 .landing-page {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 100vh; /* Ensure it doesn't overflow on smaller screens */
   background-color: #f4f4f4;
 }
 
@@ -11,6 +11,29 @@
   flex-grow: 1;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  margin-top: 10px;
   background-color: #fff;
+  min-height: 100vh;
+}
+
+/* For screens smaller than 800px */
+@media (max-width: 800px) {
+  .homepage {
+    margin-top: 20px;
+    flex-direction: column; /* Stack elements vertically */
+    padding: 10px;
+    min-height: auto; /* Allow height to adjust */
+  }
+
+  .landing-page {
+    padding: 10px; /* Reduce padding */
+  }
+}
+
+/* For screens smaller than 500px */
+@media (max-width: 500px) {
+  .homepage {
+    margin-top: 15px;
+    padding: 5px;
+  }
 }

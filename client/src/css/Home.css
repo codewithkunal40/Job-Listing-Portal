@@ -1,20 +1,24 @@
-/* Home.css */
+/* General Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .home {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
   background: linear-gradient(135deg, #003366, #000000);
   color: #fff;
   text-align: center;
-  
-height: min-content;
-  margin-top: 80px;
   overflow: hidden;
-  padding: 20px;
+  padding: 20px; /* Added padding to prevent content touching the edges */
 }
 
+/* Hero Section */
 .hero-content {
   margin-bottom: 60px;
 }
@@ -37,6 +41,7 @@ height: min-content;
   margin-right: auto;
 }
 
+/* Hero Buttons */
 .hero-buttons {
   display: flex;
   justify-content: center;
@@ -44,44 +49,47 @@ height: min-content;
   margin-top: 20px;
 }
 
+/* Button Styles */
 .btn-primary,
 .btn-secondary {
-  padding: 15px 30px;
+  padding: 10px 20px; /* Adjust padding to make the button smaller */
   text-decoration: none;
-  border-radius: 12px;
-  font-size: 1.2rem;
-  font-weight: 700;
+  border-radius: 8px; /* Slightly reduced border radius */
+  font-size: 1rem; /* Reduced font size */
+  font-weight: 600; /* Slightly lighter font weight */
+  max-width: 180px; /* Limit the width of the buttons */
   transition: background-color 0.3s ease, transform 0.3s ease,
     box-shadow 0.3s ease;
   border: 1px solid transparent;
 }
 
+/* Primary Button */
 .btn-primary {
-  background-color:  #fca311;
+  background-color: #fca311;
   color: #fff;
-  border-color: black;
   background: linear-gradient(135deg, #fca311, #ff6700);
 }
 
+/* Primary Button Hover */
 .btn-primary:hover {
- 
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  transform: translateY(-3px); /* Smaller hover effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Lighter shadow */
 }
 
+/* Secondary Button */
 .btn-secondary {
-  background-color:  #fca311;
+  background-color: #5e469e;
   color: #fff;
-  border-color: black;
   background: linear-gradient(135deg, #fca311, #ff6700);
 }
 
+/* Secondary Button Hover */
 .btn-secondary:hover {
-  
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
+/* Cards Section */
 .cards-container {
   display: flex;
   justify-content: center;
@@ -134,18 +142,94 @@ height: min-content;
 .card-link {
   display: inline-block;
   padding: 12px 24px;
-  background-color:  #fca311;
+  background-color: #fca311;
   color: #fff;
   text-decoration: none;
   border-radius: 6px;
   font-weight: 600;
   transition: background-color 0.3s ease, transform 0.3s ease;
   background: linear-gradient(135deg, #fca311, #ff6700);
-  box-shadow: 0 6px 15px rgba(255, 103, 0, 0.6); /* Premium shadow effect */
+  box-shadow: 0 6px 15px rgba(255, 103, 0, 0.6);
   z-index: 2;
 }
 
 .card-link:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Media Queries */
+@media (max-width: 800px) {
+  .hero-content {
+    margin-bottom: 40px;
+    padding: 10px;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+  }
+
+  .hero-description {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 10px; /* Stack buttons vertically */
+    margin-top: 10px;
+  }
+
+  .cards-container {
+    margin-top: 40px;
+    gap: 15px; /* Reduced gap between cards */
+  }
+
+  .card {
+    width: 250px; /* Make cards smaller for small screens */
+    padding: 15px;
+  }
+
+  .card-title {
+    font-size: 1.5rem;
+  }
+
+  .card-description {
+    font-size: 1rem;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 8px 18px; /* Adjust padding for smaller screens */
+    font-size: 0.9rem; /* Slightly smaller font size */
+    max-width: 160px; /* Smaller max width for buttons */
+  }
+}
+
+@media (max-width: 500px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-description {
+    font-size: 1.1rem;
+  }
+
+  .cards-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .card {
+    width: 100%; /* Full-width cards on very small screens */
+    padding: 10px;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 6px 16px;
+    font-size: 0.85rem; /* Even smaller font size for very small screens */
+    max-width: 150px; /* Further reduce max width */
+  }
 }
