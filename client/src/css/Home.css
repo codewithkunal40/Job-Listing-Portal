@@ -56,25 +56,27 @@
 }
 
 .btn-primary {
-  background-color: #007bff;
+  background-color:  #fca311;
   color: #fff;
-  border-color: #007bff;
+  border-color: black;
+  background: linear-gradient(135deg, #fca311, #ff6700);
 }
 
 .btn-primary:hover {
-  background-color: #0056b3;
+ 
   transform: translateY(-5px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
 .btn-secondary {
-  background-color: #6c757d;
+  background-color:  #fca311;
   color: #fff;
-  border-color: #6c757d;
+  border-color: black;
+  background: linear-gradient(135deg, #fca311, #ff6700);
 }
 
 .btn-secondary:hover {
-  background-color: #5a6268;
+  
   transform: translateY(-5px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
@@ -131,16 +133,17 @@
 .card-link {
   display: inline-block;
   padding: 12px 24px;
-  background-color: #007bff;
+  background-color:  #fca311;
   color: #fff;
   text-decoration: none;
   border-radius: 6px;
   font-weight: 600;
   transition: background-color 0.3s ease, transform 0.3s ease;
+  background: linear-gradient(135deg, #fca311, #ff6700);
   z-index: 2;
 }
 
 .card-link:hover {
-  background-color: #0056b3;
-  transform: scale(1.05);
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }

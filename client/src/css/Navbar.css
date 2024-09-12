@@ -82,10 +82,9 @@
 
 .login:hover,
 .register:hover {
-  background-color: transparent;
-  border-color: #fca311;
-  color: #fca311;
-  box-shadow: none;
+  background-color: #0056b3;
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
 .login:before,
