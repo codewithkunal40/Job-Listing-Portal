@@ -1,0 +1,172 @@
+/* General Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  background-color: #0d1117; /* Darker background for premium feel */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6); /* Strong shadow for depth */
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  font-family: "Poppins", sans-serif;
+  transition: background-color 0.4s ease;
+}
+
+.logo img {
+  height: 60px;
+  transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+  transform: scale(1.05); /* Slight scaling for hover effect */
+}
+
+.tags nav ul {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
+
+.tags nav ul li {
+  font-size: 18px;
+  font-weight: 600;
+  color: #e0e0e0;
+  cursor: pointer;
+  position: relative;
+  padding-bottom: 5px;
+  transition: color 0.3s ease;
+}
+
+.tags nav ul li:hover {
+  color: #fca311;
+}
+
+.tags nav ul li:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  background-color: #fca311;
+  transition: width 0.5s ease, left 0.5s ease;
+}
+
+.tags nav ul li:hover:after {
+  width: 100%;
+  left: 0;
+}
+
+.login-sighn {
+  display: flex;
+  gap: 20px;
+}
+
+.login,
+.register {
+  padding: 10px 25px;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  border: 2px solid transparent;
+  background: linear-gradient(135deg, #fca311, #ff6700);
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 6px 15px rgba(255, 103, 0, 0.6); /* Premium shadow effect */
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.login:hover,
+.register:hover {
+  background-color: transparent;
+  border-color: #fca311;
+  color: #fca311;
+  box-shadow: none;
+}
+
+.login:before,
+.register:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: left 0.4s ease;
+}
+
+.login:hover:before,
+.register:hover:before {
+  left: 0;
+}
+
+/* Sticky Navbar on Scroll */
+.navbar.scrolled {
+  background-color: rgba(0, 0, 0, 0.85);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+}
+
+/* Mobile Menu Toggle (Hamburger Menu) */
+.hamburger {
+  display: none;
+  font-size: 35px;
+  color: #fca311;
+  cursor: pointer;
+}
+
+/* Media Queries for Small Screens */
+@media (max-width: 768px) {
+  .tags nav ul {
+    position: fixed;
+    top: 70px;
+    right: 0;
+    height: 100vh;
+    width: 200px;
+    background-color: #0d1117;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    transition: transform 0.5s ease;
+    transform: translateX(100%);
+  }
+
+  .tags.active nav ul {
+    transform: translateX(0);
+  }
+
+  .tags nav ul li {
+    font-size: 22px;
+    padding: 20px 0;
+  }
+
+  .login-sighn {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .logo img {
+    height: 50px;
+  }
+}
+
+/* Additional styling for smooth interaction on mobile */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 10px 30px;
+  }
+
+  .hamburger {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+  }
+}
