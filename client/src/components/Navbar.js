@@ -18,7 +18,9 @@ const Navbar = () => {
       <div className={`tags ${isMobileMenuOpen ? "active" : ""}`}>
         <nav>
           <ul>
-            <li onClick={toggleMobileMenu}>Home</li>
+            <Link to="/">
+              <li onClick={toggleMobileMenu}>Home</li>
+            </Link>
             <li onClick={toggleMobileMenu}>About</li>
             <li onClick={toggleMobileMenu}>Features</li>
             <li onClick={toggleMobileMenu}>Resources</li>
