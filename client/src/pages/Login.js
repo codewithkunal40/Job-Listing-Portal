@@ -38,7 +38,8 @@ const Login = () => {
 
   return (
     <div className="login-page">
-      <Navbar />
+      <Navbar>
+      </Navbar>
       <div className="form-container">
         <h2>Login</h2>
         <form onSubmit={handleSubmit}>
@@ -66,9 +67,10 @@ const Login = () => {
             Login
           </button>
         </form>
-        <Footerr/>
       </div> 
+      <Footerr> </Footerr>
     </div>
+    
   );
 };
 

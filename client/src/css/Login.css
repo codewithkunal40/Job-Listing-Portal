@@ -26,6 +26,7 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
   margin-top: 20px;
+  margin-bottom: 10px;
 }
 
 /* Form Container Hover Effect */
