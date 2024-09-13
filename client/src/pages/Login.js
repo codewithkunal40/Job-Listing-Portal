@@ -4,7 +4,7 @@ import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import "../css/Login.css";
 import Navbar from "../components/Navbar";
-import Footerr from "../components/SmallFooter";
+import Footer from "../components/SmallFooter";
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -68,7 +68,7 @@ const Login = () => {
           </button>
         </form>
       </div> 
-      <Footerr> </Footerr>
+      <Footer> </Footer>
     </div>
     
   );
