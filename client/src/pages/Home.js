@@ -1,7 +1,9 @@
 import React from "react";
 import "../css/Home.css";
 import { Link } from "react-router-dom";
-
+import ui from "../assets/images/image copy.png";
+import wedev from "../assets/images/image copy 2.png";
+import Footer from "../components/Footer";
 const Home = () => {
   return (
     <div className="home">
@@ -52,6 +54,102 @@ const Home = () => {
             Sort Jobs
           </Link>
         </div>
+      </div>
+      <div className="drean-jobs">
+        <div className="openings">
+          <h1>2000+ Dream Job openings</h1>
+          <p>
+            Explore thousands of job opportunities and find your drean job with
+            our comprehensive job search platform
+          </p>
+        </div>
+        <div className="new-card">
+          <div className="new-card-com">
+            <img src={ui} alt="ui"></img>
+            <p>Remote work salary-</p>
+            <p>
+              Spearheaded the redesign of the company's main product interface,
+              improving usability and increasing user satisfaction by 30%.
+            </p>
+            <div className="links">
+              <p>Remote</p>
+              <p>Remote</p>
+              <p>Remote</p>
+            </div>
+          </div>
+          <div className="new-card-com">
+            <img src={wedev} alt="ui"></img>
+            <p>Remote work salary-</p>
+            <p>
+              Spearheaded the redesign of the company's main product interface,
+              improving usability and increasing user satisfaction by 30%.
+            </p>
+            <div className="links">
+              <p>Remote</p>
+              <p>Remote</p>
+              <p>Remote</p>
+            </div>
+          </div>
+          <div className="new-card-com">
+            <img src={ui} alt="ui"></img>
+            <p>Remote work salary-</p>
+            <p>
+              Spearheaded the redesign of the company's main product interface,
+              improving usability and increasing user satisfaction by 30%.
+            </p>
+            <div className="links">
+              <p>Remote</p>
+              <p>Remote</p>
+              <p>Remote</p>
+            </div>
+          </div>
+          <div className="new-card-com">
+            <img src={ui} alt="ui"></img>
+            <p>Remote work salary-</p>
+            <p>
+              Spearheaded the redesign of the company's main product interface,
+              improving usability and increasing user satisfaction by 30%.
+            </p>
+            <div className="links">
+              <p>Remote</p>
+              <p>Remote</p>
+              <p>Remote</p>
+            </div>
+          </div>
+          <div className="new-card-com">
+            <img src={ui} alt="ui"></img>
+            <p>Remote work salary-</p>
+            <p>
+              Spearheaded the redesign of the company's main product interface,
+              improving usability and increasing user satisfaction by 30%.
+            </p>
+            <div className="links">
+              <p>Remote</p>
+              <p>Remote</p>
+              <p>Remote</p>
+            </div>
+          </div>
+          <div className="new-card-com">
+            <img src={ui} alt="ui"></img>
+            <p>Remote work salary-</p>
+            <p>
+              Spearheaded the redesign of the company's main product interface,
+              improving usability and increasing user satisfaction by 30%.
+            </p>
+            <div className="links">
+              <p>Remote</p>
+              <p>Remote</p>
+              <p>Remote</p>
+            </div>
+          </div>
+        </div>
+        <button className="btn btn-primary">Load more jobs</button>
+      </div>
+      <div className="opportunities">
+        <p>Find your best opportunities today</p>
+        <button className="btn">Explore more</button>
+        <button className="btn">Get started</button>
+        <button></button>
       </div>
     </div>
   );
