@@ -4,15 +4,22 @@ import jobsModel from "../models/jobsModel.js";
 // CREATE JOB
 export const createJobController = async (req, res, next) => {
   const { company, position, qualification, salary, workLocation } = req.body;
+
+  // Check for missing fields
   if (!company || !position || !qualification || !salary || !workLocation) {
     return res
       .status(400)
       .json({ success: false, message: "Please provide all fields" });
   }
+
   try {
+    // Assign userId from the decoded token
     req.body.createdBy = req.user.userId;
+
+    // Create the job entry in the database
     const job = await jobsModel.create(req.body);
-    res.status(201).json({ job });
+
+    res.status(201).json({ success: true, job });
   } catch (error) {
     next(error);
   }

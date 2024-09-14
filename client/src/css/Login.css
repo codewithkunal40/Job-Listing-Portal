@@ -7,7 +7,7 @@
   ); /* Darker background with a smooth gradient */
   display: flex;
   flex-direction: column;
-  /* Center content vertically */
+
   align-items: center;
   height: 100vh;
   width: 100%;

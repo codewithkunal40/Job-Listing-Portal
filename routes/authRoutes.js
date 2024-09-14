@@ -177,6 +177,6 @@ router.post("/register", limiter, registerController);
  *                   type: string
  *                   example: Something went wrong
  */
-router.post("/login", userAuth, limiter, loginController);
+router.post("/login", limiter, loginController);
 
 export default router;
