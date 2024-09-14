@@ -4,7 +4,7 @@ import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import "../css/Register.css";
 import Navbar from "../components/Navbar";
-import Footerr from "../components/SmallFooter";
+import SmallFooter from "../components/SmallFooter";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -131,7 +131,7 @@ const Register = () => {
           </div>
         </div>
       </div>
-      <Footerr />
+      <SmallFooter />
     </div>
           
 
