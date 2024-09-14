@@ -82,7 +82,7 @@ const Layout = ({ children }) => {
 
       <main className="main-content">
         <div className="heading text-center">
-          <h1>Welcome, {name || "User"}</h1> {/* Fallback if name is empty */}
+          <h1>Welcome to the job-portal, {name || "User"}</h1>
         </div>
         {children}
       </main>
