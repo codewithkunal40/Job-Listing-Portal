@@ -7,6 +7,7 @@ import DashboardHome from "./DashboardHome"; // Dashboard home content
 import CreateJob from "./CreateJob";
 import JobList from "./JobList";
 import JobStats from "./JobStats";
+import Logout from "./Logout";
 // Placeholder for logout logic
 
 const JobDashboard = () => {
@@ -19,6 +20,7 @@ const JobDashboard = () => {
         <Route path="/create-job" element={<CreateJob />} />
         <Route path="/job-list" element={<JobList />} />
         <Route path="/job-stats" element={<JobStats />} />
+        <Route path="/logout" element={<Logout />} />
       </Routes>
     </Layout>
   );

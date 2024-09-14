@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { hideLoading, showLoading } from "../../redux/features/alertSlice";
 import axios from "axios";
@@ -9,39 +9,47 @@ const PrivateRoute = ({ children }) => {
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const getUser = async () => {
-    try {
-      dispatch(showLoading());
-
-      // Correct axios request structure for GET with headers
-      const { data } = await axios.get("/api/v1/user/get-user", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
-
-      dispatch(hideLoading());
-
-      if (data.success) {
-        dispatch(setUser(data.data)); // Set user data in Redux store
-      } else {
-        localStorage.clear();
-        navigate("/login");
-      }
-    } catch (error) {
-      console.log(error);
-      localStorage.clear();
-      dispatch(hideLoading());
-      navigate("/login"); // Redirect to login if error occurs
-    }
-  };
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const getUser = async () => {
+      try {
+        dispatch(showLoading());
+
+        const { data } = await axios.get("/api/v1/user/get-user", {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+
+        dispatch(hideLoading());
+
+        if (data.success) {
+          dispatch(setUser(data.data));
+        } else {
+          localStorage.clear();
+          navigate("/login");
+        }
+      } catch (error) {
+        console.log(error);
+        localStorage.clear();
+        dispatch(hideLoading());
+        navigate("/login");
+      } finally {
+        setLoading(false);
+      }
+    };
+
     if (!user) {
       getUser();
+    } else {
+      setLoading(false);
     }
-  }, [user]); // Only fetch user if it's not already in the Redux state
+  }, [user, dispatch, navigate]);
+
+  if (loading) {
+    return <div>Loading...</div>; // Optional: Add a loading indicator
+  }
 
   return user ? children : null; // Render children if user is authenticated
 };

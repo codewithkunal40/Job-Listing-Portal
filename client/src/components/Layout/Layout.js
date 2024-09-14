@@ -1,12 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../../css/Layout.css"; // Assuming you're putting styles in this CSS file
-
+import logo from "../../assets/images/image.png";
+import Navbar from "../Navbar";
 const Layout = ({ children }) => {
   return (
     <div className="layout-container">
       <aside className="sidebar">
-        <h2 className="sidebar-title">Menu</h2>
+        <h2 className="sidebar-title">
+          <img src={logo} />
+        </h2>
         <nav className="menu">
           <ul>
             <li>

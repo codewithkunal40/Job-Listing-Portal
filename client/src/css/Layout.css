@@ -17,12 +17,11 @@
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
 }
 
-.sidebar-title {
-  font-size: 1.6rem; /* Larger font for the title */
-  margin-bottom: 20px; /* Space below title */
-  color: #ecf0f1; /* Matching text color */
-  border-bottom: 1px solid #34495e; /* Underline effect */
-  padding-bottom: 10px; /* Space below the title */
+.sidebar-title img {
+  /* Space below the title */
+  width: 70px;
+  margin: 0px 60px;
+  border-radius: 50%;
 }
 
 .menu {
