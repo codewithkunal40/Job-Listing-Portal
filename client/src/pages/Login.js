@@ -17,12 +17,9 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const token = localStorage.getItem("token");
-      const res = await axios.post("/api/v1/auth/login", formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      // Remove Authorization header as you don't need it for login
+      const res = await axios.post("/api/v1/auth/login", formData);
+
       if (res.data.success) {
         toast.success("Login successful!");
         localStorage.setItem("token", res.data.token);
@@ -31,15 +28,21 @@ const Login = () => {
         toast.error(res.data.message);
       }
     } catch (error) {
-      console.error("Error during login", error);
-      toast.error("Invalid email or password. Please try again.");
+      // Check for specific error messages from the backend
+      if (error.response && error.response.data) {
+        toast.error(
+          error.response.data.message ||
+            "Invalid email or password. Please try again."
+        );
+      } else {
+        toast.error("An unexpected error occurred. Please try again later.");
+      }
     }
   };
 
   return (
     <div className="login-page">
-      <Navbar>
-      </Navbar>
+      <Navbar />
       <div className="form-container">
         <h2>Login</h2>
         <form onSubmit={handleSubmit}>
@@ -67,10 +70,9 @@ const Login = () => {
             Login
           </button>
         </form>
-      </div> 
-      <Footer> </Footer>
+      </div>
+      <Footer />
     </div>
-    
   );
 };
 
