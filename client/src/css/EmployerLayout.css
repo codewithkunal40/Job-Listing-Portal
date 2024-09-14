@@ -1,0 +1,46 @@
+/* EmployerLayout.css */
+.layout-container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background: #f4f4f4;
+  padding: 20px;
+}
+
+.sidebar-title img {
+  width: 100%;
+  height: auto;
+}
+
+.menu ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.menu-item {
+  display: block;
+  padding: 10px;
+  color: #333;
+  text-decoration: none;
+}
+
+.menu-item:hover {
+  background-color: #ddd;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background: #fff;
+}
+
+.heading {
+  margin-bottom: 20px;
+}
+
+.text-center {
+  text-align: center;
+}

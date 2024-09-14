@@ -1,4 +1,3 @@
-// App.js
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Homepage from "./pages/Homepage";
@@ -6,11 +5,12 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import NotFound from "./pages/NotFound";
 import { Toaster } from "react-hot-toast";
-import EmployerDashboard from "./pages/EmployerDashboard";
+// Updated import
 import JobDashboard from "./pages/JobDashboard";
 import EmployerDashboardRoutes from "./pages/EmployerDashboardRoutes";
 import PrivateRoute from "./components/routes/PrivateRoute";
 import PublicRoute from "./components/routes/PublicRoute";
+import EmployerLayout from "./components/Layout/EmployerLayout";
 
 const App = () => {
   return (
@@ -47,9 +47,9 @@ const App = () => {
           path="/employer-dashboard/*"
           element={
             <PrivateRoute>
-              <EmployerDashboard>
+              <EmployerLayout>
                 <EmployerDashboardRoutes />
-              </EmployerDashboard>
+              </EmployerLayout>
             </PrivateRoute>
           }
         />
