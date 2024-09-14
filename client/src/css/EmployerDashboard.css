@@ -1,0 +1,17 @@
+/* css/EmployerDashboard.css */
+.dashboard-container {
+  display: flex;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #f4f4f4;
+  padding: 20px;
+  height: 100vh; /* Full height sidebar */
+  border-right: 1px solid #ddd;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+}

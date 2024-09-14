@@ -16,12 +16,12 @@ const Layout = ({ children }) => {
       try {
         const response = await axios.get(`/api/v1/user/get-user/${id}`, {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`, // Use backticks for template literals
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         });
         // Adjust based on the structure of your response
         if (response.data.success) {
-          setName(response.data.data.name); // Assuming response.data.data contains the user data
+          setName(response.data.data.name);
         } else {
           console.error("Failed to fetch user data:", response.data.message);
         }
@@ -56,11 +56,7 @@ const Layout = ({ children }) => {
                 Settings
               </Link>
             </li>
-            <li>
-              <Link to="/job-dashboard/create-job" className="menu-item">
-                Create Job
-              </Link>
-            </li>
+
             <li>
               <Link to="/job-dashboard/job-list" className="menu-item">
                 Job List

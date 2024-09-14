@@ -2,18 +2,17 @@ import axios from "axios";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import "../css/Login.css";
+import { useDispatch } from "react-redux";
+import { hideLoading, showLoading } from "../redux/features/alertSlice";
 import Navbar from "../components/Navbar";
 import Footer from "../components/SmallFooter";
-import { hideLoading, showLoading } from "../redux/features/alertSlice";
+import "../css/Login.css";
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // const { loading } = useSelector((state) => state.alertSlice);
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -27,20 +26,18 @@ const Login = () => {
       if (res.data.success) {
         toast.success("Login successful!");
         localStorage.setItem("token", res.data.token);
-        navigate("/job-dashboard");
+        localStorage.setItem("role", res.data.user.role); // Save user role
+        // Navigate based on role
+        if (res.data.user.role === "employer") {
+          navigate("/employer-dashboard");
+        } else {
+          navigate("/job-dashboard");
+        }
       } else {
         toast.error(res.data.message);
       }
     } catch (error) {
-      // Check for specific error messages from the backend
-      if (error.response && error.response.data) {
-        toast.error(
-          error.response.data.message ||
-            "Invalid email or password. Please try again."
-        );
-      } else {
-        toast.error("An unexpected error occurred. Please try again later.");
-      }
+      toast.error("An unexpected error occurred. Please try again later.");
     }
   };
 
