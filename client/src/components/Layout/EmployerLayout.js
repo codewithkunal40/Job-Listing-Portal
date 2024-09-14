@@ -7,6 +7,7 @@ import logo from "../../assets/images/image.png";
 const EmployerLayout = ({ children }) => {
   const [name, setName] = useState("");
   const { id } = useParams();
+  const [isSidebarVisible, setIsSidebarVisible] = useState(true);
 
   useEffect(() => {
     // Fetch user data when the component mounts
@@ -30,9 +31,16 @@ const EmployerLayout = ({ children }) => {
     fetchUserData();
   }, [id]); // Add id as dependency to refetch if id changes
 
+  const toggleSidebar = () => {
+    setIsSidebarVisible(!isSidebarVisible);
+  };
+
   return (
     <div className="layout-container">
-      <aside className="sidebar">
+      <aside className={`sidebar ${!isSidebarVisible ? "collapsed" : ""}`}>
+        <button className="sidebar-toggle" onClick={toggleSidebar}>
+          {isSidebarVisible ? "☰" : "✕"}
+        </button>
         <h2 className="sidebar-title">
           <img src={logo} alt="Logo" />
         </h2>

@@ -7,6 +7,7 @@ import JobList from "./JobList";
 import JobStats from "./JobStats";
 import Settings from "./Settings";
 import Logout from "./Logout";
+import Contactform from "./Contactform";
 // Assuming you have a Sidebar component
 
 const JobDashboard = () => {
@@ -21,6 +22,7 @@ const JobDashboard = () => {
             <Route path="/job-stats" element={<JobStats />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/logout" element={<Logout />} />
+            <Route path="/contact" element={<Contactform />} />
           </Routes>
         </div>
       </div>

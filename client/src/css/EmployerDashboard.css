@@ -1,17 +1,78 @@
 /* css/EmployerDashboard.css */
 .dashboard-container {
   display: flex;
+  flex-direction: column; /* Stack vertically on smaller screens */
 }
 
 .sidebar {
   width: 250px;
-  background-color: #f4f4f4;
+  background-color: #826f6f;
   padding: 20px;
   height: 100vh; /* Full height sidebar */
   border-right: 1px solid #ddd;
+  position: fixed; /* Fixes the sidebar in place */
+  top: 0;
+  left: 0;
+  z-index: 1000; /* Keeps the sidebar above other content */
+  transition: transform 0.3s ease; /* Smooth transition for sidebar toggling */
+}
+
+.sidebar.collapsed {
+  transform: translateX(-100%); /* Hide the sidebar off-screen */
 }
 
 .main-content {
   flex: 1;
   padding: 20px;
+  margin-left: 250px; /* Offset content by the width of the sidebar */
+  transition: margin-left 0.3s ease; /* Smooth transition for content shift */
+}
+
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 200px;
+    padding: 15px;
+  }
+
+  .main-content {
+    margin-left: 200px; /* Offset content for smaller sidebar */
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    height: auto; /* Allow sidebar to adjust height based on content */
+    position: relative; /* Sidebar no longer fixed */
+    transform: translateX(-100%); /* Initially hidden on mobile */
+  }
+
+  .sidebar.show {
+    transform: translateX(0); /* Show the sidebar on mobile */
+  }
+
+  .main-content {
+    margin-left: 0; /* No margin needed on mobile */
+  }
+}
+
+/* Button to toggle sidebar visibility */
+.sidebar-toggle {
+  display: none; /* Hidden by default */
+}
+
+@media (max-width: 768px) {
+  .sidebar-toggle {
+    display: block;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1001;
+    background-color: #826f6f;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 18px;
+    cursor: pointer;
+  }
 }

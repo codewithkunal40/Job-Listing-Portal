@@ -1,7 +1,6 @@
 // pages/EmployerDashboardRoutes.js
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import DashboardHome from "./DashboardHome";
 import Profile from "./Profile";
 import CreateJob from "./CreateJob";
 import Settings from "./Settings";
