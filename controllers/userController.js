@@ -77,7 +77,7 @@ export const getUserController = async (req, res) => {
 
 export const getUserOnIdController = async (req, res) => {
   try {
-    const userId = req.body.user._id;
+    const userId = req.params._id;
     const user = await userModel.findOne({ userId });
     return res.status(200).send({
       success: true,

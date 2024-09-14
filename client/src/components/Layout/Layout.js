@@ -1,14 +1,43 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
+import axios from "axios";
 import "../../css/Layout.css"; // Assuming you're putting styles in this CSS file
 import logo from "../../assets/images/image.png";
-import Navbar from "../Navbar";
+
 const Layout = ({ children }) => {
+  const [name, setName] = useState("");
+  const { id } = useParams();
+
+  // Access route parameter here
+
+  useEffect(() => {
+    // Fetch user data when the component mounts
+    const fetchUserData = async () => {
+      try {
+        const response = await axios.get(`/api/v1/user/get-user/${id}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`, // Use backticks for template literals
+          },
+        });
+        // Adjust based on the structure of your response
+        if (response.data.success) {
+          setName(response.data.data.name); // Assuming response.data.data contains the user data
+        } else {
+          console.error("Failed to fetch user data:", response.data.message);
+        }
+      } catch (error) {
+        console.error("Failed to fetch user data", error);
+      }
+    };
+
+    fetchUserData();
+  }, [id]); // Add id as dependency to refetch if id changes
+
   return (
     <div className="layout-container">
       <aside className="sidebar">
         <h2 className="sidebar-title">
-          <img src={logo} />
+          <img src={logo} alt="Logo" />
         </h2>
         <nav className="menu">
           <ul>
@@ -51,7 +80,12 @@ const Layout = ({ children }) => {
         </nav>
       </aside>
 
-      <main className="main-content">{children}</main>
+      <main className="main-content">
+        <div className="heading text-center">
+          <h1>Welcome, {name || "User"}</h1> {/* Fallback if name is empty */}
+        </div>
+        {children}
+      </main>
     </div>
   );
 };

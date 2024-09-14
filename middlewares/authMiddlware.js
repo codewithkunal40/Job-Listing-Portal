@@ -22,7 +22,8 @@ export const userAuth = async (req, res, next) => {
         });
       }
 
-      req.body.user = { userId: decoded.userId };
+      // Set the decoded user information in the request object
+      req.user = { userId: decoded.userId };
       next();
     });
   } catch (error) {
