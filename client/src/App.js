@@ -6,6 +6,8 @@ import Register from "./pages/Register";
 import NotFound from "./pages/NotFound";
 import { Toaster } from "react-hot-toast";
 import JobDashboard from "./pages/JobDashboard";
+import PrivateRoute from "./components/routes/PrivateRoute";
+import PublicRoute from "./components/routes/PublicRoute";
 
 const App = () => {
   return (
@@ -13,10 +15,38 @@ const App = () => {
       <Toaster />
       <Routes>
         <Route path="*" element={<NotFound />} />
-        <Route path="/" element={<Homepage />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/job-dashboard" element={<JobDashboard />} />
+        <Route
+          path="/"
+          element={
+            <PublicRoute>
+              <Homepage />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <PublicRoute>
+              <Login />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <PublicRoute>
+              <Register />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/job-dashboard/*"
+          element={
+            <PrivateRoute>
+              <JobDashboard />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </div>
   );

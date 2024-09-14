@@ -22,7 +22,7 @@ export const userAuth = async (req, res, next) => {
         });
       }
 
-      req.user = { userId: decoded.userId };
+      req.body.user = { userId: decoded.userId };
       next();
     });
   } catch (error) {

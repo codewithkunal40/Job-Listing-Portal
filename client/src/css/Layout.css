@@ -1,0 +1,85 @@
+/* Layout.css */
+.layout-container {
+  display: flex;
+  height: 100vh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* Clean font */
+  background-color: #f4f7f9; /* Light background for the entire layout */
+}
+
+.sidebar {
+  background-color: #2c3e50; /* Dark sidebar background */
+  color: #ecf0f1; /* Light text color */
+  width: 250px; /* Fixed width for sidebar */
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-right: 1px solid #34495e; /* Subtle border */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+}
+
+.sidebar-title {
+  font-size: 1.6rem; /* Larger font for the title */
+  margin-bottom: 20px; /* Space below title */
+  color: #ecf0f1; /* Matching text color */
+  border-bottom: 1px solid #34495e; /* Underline effect */
+  padding-bottom: 10px; /* Space below the title */
+}
+
+.menu {
+  margin-top: 10px;
+}
+
+.menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu ul li {
+  margin: 15px 0; /* Space between menu items */
+}
+
+.menu-item {
+  text-decoration: none;
+  color: #ecf0f1; /* Light color for text */
+  font-weight: 500; /* Slightly bolder text */
+  display: block;
+  padding: 10px 15px; /* Padding around text */
+  border-radius: 8px; /* Rounded corners */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+.menu-item:hover {
+  background-color: #34495e; /* Darker background on hover */
+  color: #ffffff; /* Change text color on hover */
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #ffffff; /* White background for the main content */
+  border-radius: 8px; /* Rounded corners for main content */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  overflow-y: auto; /* Enable scrolling if content overflows */
+}
+
+h2 {
+  color: #2c3e50; /* Dark color for headings */
+  margin-bottom: 20px; /* Space below headings */
+}
+
+@media (max-width: 768px) {
+  .layout-container {
+    flex-direction: column; /* Stack sidebar and main content on smaller screens */
+  }
+
+  .sidebar {
+    width: 100%; /* Full width for sidebar on mobile */
+    border-right: none; /* Remove border on mobile */
+    border-bottom: 1px solid #34495e; /* Add bottom border on mobile */
+  }
+
+  .main-content {
+    padding: 15px; /* Adjust padding on smaller screens */
+  }
+}

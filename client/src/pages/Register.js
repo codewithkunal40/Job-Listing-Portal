@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import "../css/Register.css";
 import Navbar from "../components/Navbar";
 import Footerr from "../components/SmallFooter";
+import { useDispatch } from "react-redux";
+import { hideLoading, showLoading } from "../redux/features/alertSlice";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -17,7 +19,7 @@ const Register = () => {
     phoneNumber: "",
     role: "job seeker",
   });
-
+  const dispatch = useDispatch();
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -28,7 +30,9 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      dispatch(showLoading());
       const res = await axios.post("/api/v1/auth/register", formData);
+      dispatch(hideLoading());
       if (res.data.success) {
         toast.success("Registration successful!");
         navigate("/login");
@@ -127,15 +131,11 @@ const Register = () => {
             >
               Login
             </button>
-            
           </div>
         </div>
       </div>
       <Footerr />
     </div>
-          
-
-      
   );
 };
 

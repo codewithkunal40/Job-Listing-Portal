@@ -2,14 +2,18 @@ import axios from "axios";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import "../css/Login.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/SmallFooter";
+import { hideLoading, showLoading } from "../redux/features/alertSlice";
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
+  // const { loading } = useSelector((state) => state.alertSlice);
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -17,9 +21,9 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Remove Authorization header as you don't need it for login
+      dispatch(showLoading());
       const res = await axios.post("/api/v1/auth/login", formData);
-
+      dispatch(hideLoading());
       if (res.data.success) {
         toast.success("Login successful!");
         localStorage.setItem("token", res.data.token);

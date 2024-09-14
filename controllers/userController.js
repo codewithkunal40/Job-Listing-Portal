@@ -63,7 +63,7 @@ export const getUserController = async (req, res) => {
     return res.status(200).send({
       success: true,
       message: "Fetched the users successfully",
-      users,
+      data: users,
     });
   } catch (error) {
     console.log(error);
@@ -77,12 +77,12 @@ export const getUserController = async (req, res) => {
 
 export const getUserOnIdController = async (req, res) => {
   try {
-    const userId = req.body._id;
+    const userId = req.body.user._id;
     const user = await userModel.findOne({ userId });
     return res.status(200).send({
       success: true,
       message: "User fetched on the basis of Id",
-      user,
+      data: user,
     });
   } catch (error) {
     console.log(error);
