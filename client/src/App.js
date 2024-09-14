@@ -1,11 +1,12 @@
 import React from "react";
-import Homepage from "./pages/Homepage";
 import { Route, Routes } from "react-router-dom";
+import Homepage from "./pages/Homepage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import DashBoard from "./pages/DashBoard";
 import NotFound from "./pages/NotFound";
 import { Toaster } from "react-hot-toast";
+import JobDashboard from "./pages/JobDashboard";
+
 const App = () => {
   return (
     <div>
@@ -15,7 +16,7 @@ const App = () => {
         <Route path="/" element={<Homepage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/job-dashboard" element={<DashBoard />} />
+        <Route path="/job-dashboard" element={<JobDashboard />} />
       </Routes>
     </div>
   );
