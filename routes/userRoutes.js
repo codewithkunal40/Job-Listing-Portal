@@ -154,7 +154,7 @@ const router = express.Router();
  *         description: Unauthorized
  */
 
-router.put("/update-user", userAuth, updateUserController);
+router.put("/update-user/:id", userAuth, updateUserController);
 router.get("/get-user", userAuth, getUserController);
 router.get("/get-user/:id", userAuth, getUserOnIdController);
 router.post("/upload-resume", uploadResume, userAuth, uploadResumeController);
