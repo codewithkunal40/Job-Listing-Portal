@@ -52,7 +52,7 @@ const EmployerLayout = ({ children }) => {
               </Link>
             </li>
             <li>
-              <Link to="/employer-dashboard/profile" className="menu-item">
+              <Link to="/employer-dashboard/profile/:id" className="menu-item">
                 Profile
               </Link>
             </li>

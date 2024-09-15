@@ -1,0 +1,118 @@
+/* Profile page container */
+.profile-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+.profile-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.profile-header h1 {
+  font-size: 2.5rem;
+  color: #003366; /* Adjust according to your theme */
+  margin: 0;
+}
+
+.profile-header p {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+/* User info section */
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-info img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.profile-info .user-details {
+  text-align: center;
+}
+
+.profile-info .user-details h2 {
+  font-size: 1.8rem;
+  color: #003366;
+}
+
+.profile-info .user-details p {
+  font-size: 1.1rem;
+  color: #666;
+  margin: 5px 0;
+}
+
+/* Profile details card */
+.profile-card {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+}
+
+.profile-card .card-section {
+  width: 48%;
+}
+
+.profile-card h3 {
+  font-size: 1.5rem;
+  color: #003366;
+  margin-bottom: 10px;
+}
+
+.profile-card p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Buttons */
+.profile-buttons {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.profile-buttons button {
+  background-color: #003366;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 6px;
+  margin: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.profile-buttons button:hover {
+  background-color: #005bb5;
+}
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+  .profile-card {
+    flex-direction: column;
+  }
+
+  .profile-card .card-section {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
