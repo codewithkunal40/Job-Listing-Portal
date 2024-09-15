@@ -10,6 +10,7 @@ const ViewApplications = () => {
   const [updatedUser, setUpdatedUser] = useState({
     name: "",
     email: "",
+    lastname: "",
     location: "",
     phoneNumber: "",
     role: "",
@@ -40,6 +41,7 @@ const ViewApplications = () => {
     setUpdatedUser({
       name: user.name,
       email: user.email,
+      lastname: user.lastname,
       location: user.location,
       phoneNumber: user.phoneNumber,
       role: user.role,
@@ -51,8 +53,8 @@ const ViewApplications = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.put(
-        `/api/v1/user/update-user/${editingUser._id}`,
-        updatedUser,
+        `/api/v1/user/update-user`,
+        updatedUser, // Send only the updated fields, user ID is managed by the server
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -130,6 +132,16 @@ const ViewApplications = () => {
               value={updatedUser.email}
               onChange={(e) =>
                 setUpdatedUser({ ...updatedUser, email: e.target.value })
+              }
+            />
+          </label>
+          <label>
+            Last Name:
+            <input
+              type="text"
+              value={updatedUser.lastname}
+              onChange={(e) =>
+                setUpdatedUser({ ...updatedUser, lastname: e.target.value })
               }
             />
           </label>
