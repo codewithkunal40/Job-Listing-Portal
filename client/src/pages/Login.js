@@ -2,13 +2,20 @@ import axios from "axios";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import "../css/Login.css";
+import { useDispatch } from "react-redux";
+import { hideLoading, showLoading } from "../redux/features/alertSlice";
 import Navbar from "../components/Navbar";
+<<<<<<< HEAD
 import SmallFooter from "../components/SmallFooter";
+=======
+import Footer from "../components/SmallFooter";
+import "../css/Login.css";
+>>>>>>> d50b7706ae45793096ad6f3590e2ef59a0abe079
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -17,29 +24,30 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const token = localStorage.getItem("token");
-      const res = await axios.post("/api/v1/auth/login", formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      dispatch(showLoading());
+      const res = await axios.post("/api/v1/auth/login", formData);
+      dispatch(hideLoading());
       if (res.data.success) {
         toast.success("Login successful!");
         localStorage.setItem("token", res.data.token);
-        navigate("/job-dashboard");
+        localStorage.setItem("role", res.data.user.role); // Save user role
+        // Navigate based on role
+        if (res.data.user.role === "employer") {
+          navigate("/employer-dashboard");
+        } else {
+          navigate("/job-dashboard");
+        }
       } else {
         toast.error(res.data.message);
       }
     } catch (error) {
-      console.error("Error during login", error);
-      toast.error("Invalid email or password. Please try again.");
+      toast.error("An unexpected error occurred. Please try again later.");
     }
   };
 
   return (
     <div className="login-page">
-      <Navbar>
-      </Navbar>
+      <Navbar />
       <div className="form-container">
         <h2>Login</h2>
         <form onSubmit={handleSubmit}>
@@ -67,10 +75,14 @@ const Login = () => {
             Login
           </button>
         </form>
+<<<<<<< HEAD
       </div> 
       <SmallFooter> </SmallFooter>
+=======
+      </div>
+      <Footer />
+>>>>>>> d50b7706ae45793096ad6f3590e2ef59a0abe079
     </div>
-    
   );
 };
 

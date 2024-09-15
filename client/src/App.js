@@ -1,21 +1,66 @@
 import React from "react";
-import Homepage from "./pages/Homepage";
 import { Route, Routes } from "react-router-dom";
+import Homepage from "./pages/Homepage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import DashBoard from "./pages/DashBoard";
 import NotFound from "./pages/NotFound";
 import { Toaster } from "react-hot-toast";
+// Updated import
+import JobDashboard from "./pages/JobDashboard";
+import EmployerDashboardRoutes from "./pages/EmployerDashboardRoutes";
+import PrivateRoute from "./components/routes/PrivateRoute";
+import PublicRoute from "./components/routes/PublicRoute";
+import EmployerLayout from "./components/Layout/EmployerLayout";
+
 const App = () => {
   return (
     <div>
       <Toaster />
       <Routes>
         <Route path="*" element={<NotFound />} />
-        <Route path="/" element={<Homepage />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/job-dashboard" element={<DashBoard />} />
+        <Route
+          path="/"
+          element={
+            <PublicRoute>
+              <Homepage />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <PublicRoute>
+              <Login />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <PublicRoute>
+              <Register />
+            </PublicRoute>
+          }
+        />
+        {/* Role-based routing */}
+        <Route
+          path="/employer-dashboard/*"
+          element={
+            <PrivateRoute>
+              <EmployerLayout>
+                <EmployerDashboardRoutes />
+              </EmployerLayout>
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/job-dashboard/*"
+          element={
+            <PrivateRoute>
+              <JobDashboard />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </div>
   );

@@ -63,7 +63,7 @@ export const registerController = async (req, res, next) => {
       role,
     });
 
-    const token = user.createJWT();
+    // const token = user.createJWT();
 
     // Send success response
     res.status(201).send({
@@ -76,7 +76,7 @@ export const registerController = async (req, res, next) => {
         role: user.role,
         location: user.location,
       },
-      token,
+      // token,
     });
   } catch (error) {
     next(error);
