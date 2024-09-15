@@ -5,12 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { hideLoading, showLoading } from "../redux/features/alertSlice";
 import Navbar from "../components/Navbar";
-<<<<<<< HEAD
 import SmallFooter from "../components/SmallFooter";
-=======
-import Footer from "../components/SmallFooter";
 import "../css/Login.css";
->>>>>>> d50b7706ae45793096ad6f3590e2ef59a0abe079
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -41,6 +37,7 @@ const Login = () => {
         toast.error(res.data.message);
       }
     } catch (error) {
+      dispatch(hideLoading());
       toast.error("An unexpected error occurred. Please try again later.");
     }
   };
@@ -75,13 +72,9 @@ const Login = () => {
             Login
           </button>
         </form>
-<<<<<<< HEAD
-      </div> 
-      <SmallFooter> </SmallFooter>
-=======
       </div>
-      <Footer />
->>>>>>> d50b7706ae45793096ad6f3590e2ef59a0abe079
+      <SmallFooter />
+      <footer />
     </div>
   );
 };
