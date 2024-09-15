@@ -4,9 +4,13 @@ import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import "../css/Register.css";
 import Navbar from "../components/Navbar";
+<<<<<<< HEAD
+import SmallFooter from "../components/SmallFooter";
+=======
 import Footerr from "../components/SmallFooter";
 import { useDispatch } from "react-redux";
 import { hideLoading, showLoading } from "../redux/features/alertSlice";
+>>>>>>> d50b7706ae45793096ad6f3590e2ef59a0abe079
 
 const Register = () => {
   const navigate = useNavigate();
@@ -134,7 +138,7 @@ const Register = () => {
           </div>
         </div>
       </div>
-      <Footerr />
+      <SmallFooter />
     </div>
   );
 };
