@@ -67,6 +67,11 @@ const EmployerLayout = ({ children }) => {
               </Link>
             </li>
             <li>
+              <Link to="/employer-dashboard/applicants" className="menu-item">
+                Job applicants
+              </Link>
+            </li>
+            <li>
               <Link to="/employer-dashboard/job-list" className="menu-item">
                 Job List
               </Link>

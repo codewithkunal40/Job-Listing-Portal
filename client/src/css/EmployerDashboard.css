@@ -6,9 +6,9 @@
 
 .sidebar {
   width: 250px;
-  background-color: #826f6f;
+  background-color: #f2c6c6;
   padding: 20px;
-  height: 100vh; /* Full height sidebar */
+  min-height: 100vh; /* Full height sidebar */
   border-right: 1px solid #ddd;
   position: fixed; /* Fixes the sidebar in place */
   top: 0;

@@ -16,6 +16,9 @@ const EmployerSidebar = () => {
           <Link to="/employer-dashboard/create-job">Create Job</Link>
         </li>
         <li>
+          <Link to="/employer-dashboard/applicants">Job applicants</Link>
+        </li>
+        <li>
           <Link to="/employer-dashboard/job-list">Job List</Link>
         </li>
         <li>
@@ -24,6 +27,7 @@ const EmployerSidebar = () => {
         <li>
           <Link to="/employer-dashboard/job-stats">Job Stats</Link>
         </li>
+
         <li>
           <Link to="/employer-dashboard/logout">Logout</Link>
         </li>

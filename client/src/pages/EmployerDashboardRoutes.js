@@ -8,6 +8,7 @@ import JobList from "./JobList";
 import JobStats from "./JobStats";
 import Logout from "./Logout";
 import EmployerDashboard from "./EmployerDashboard";
+import ViewApplications from "./ViewApplications";
 
 const EmployerDashboardRoutes = () => {
   return (
@@ -19,6 +20,7 @@ const EmployerDashboardRoutes = () => {
       <Route path="/settings" element={<Settings />} />
       <Route path="/job-stats" element={<JobStats />} />
       <Route path="/logout" element={<Logout />} />
+      <Route path="/applicants" element={<ViewApplications />} />
     </Routes>
   );
 };

@@ -1,7 +1,7 @@
 /* css/EmployerLayout.css */
 .layout-container {
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
   background: #f0f2f5; /* Light background color for the entire layout */
 }
 
@@ -9,7 +9,7 @@
   width: 260px;
   background: linear-gradient(
     135deg,
-    #a64d79,
+    #181517,
     #0f060b
   ); /* Gradient background for a premium look */
   padding: 20px;
@@ -18,7 +18,7 @@
   position: fixed; /* Keeps the sidebar fixed on larger screens */
   top: 0;
   left: 0;
-  height: 100%;
+  min-height: 100vh;
   z-index: 1000; /* Keeps the sidebar above other content */
   transition: transform 0.3s ease; /* Smooth transition for sidebar toggling */
 }

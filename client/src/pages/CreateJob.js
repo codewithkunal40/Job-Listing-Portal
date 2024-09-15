@@ -49,7 +49,7 @@ const CreateJob = () => {
 
       if (data.success) {
         toast.success("Job created successfully");
-        navigate("/job-dashboard"); // Redirect to job dashboard
+        navigate("/employer-dashboard"); // Redirect to job dashboard
       } else {
         toast.error(data.message || "Something went wrong");
       }
