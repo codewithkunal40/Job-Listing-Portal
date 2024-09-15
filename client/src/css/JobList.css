@@ -1,20 +1,28 @@
-/* JobList.css */
+/* css/JobList.css */
 
 .job-list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 30px;
-  margin: 0 auto;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  background-color: #e8f0f2; /* Light background color */
   min-height: 100vh;
 }
 
 h2 {
-  text-align: center;
-  margin-bottom: 40px;
-  font-size: 2.8rem;
+  font-size: 32px;
+  font-weight: 700;
   color: #333;
-  font-weight: 600;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+p {
+  font-size: 18px;
+  color: #444;
+  text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .job-list {
@@ -22,125 +30,114 @@ h2 {
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
+  max-width: 1200px; /* Limiting width for better appearance */
+  margin: 0 auto;
 }
 
 .job-card {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  width: 100%;
-  max-width: 260px;
-  transition: transform 0.3s, box-shadow 0.3s;
-  border: 1px solid #ddd;
-  text-align: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  padding: 20px;
+  border: 1px solid #d1d1d1;
+  border-radius: 15px;
+  background-color: #ffffff;
+  width: 320px; /* Adjusted width for better card proportion */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .job-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.2);
-  background: linear-gradient(135deg, #eaf4fc, #e0e4e8);
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .job-card h3 {
-  margin-top: 0;
-  font-size: 1.8rem;
-  color: #0056b3;
-  font-weight: 700;
+  font-size: 24px;
+  font-weight: 600;
+  color: #2c3e50; /* Darker color for job title */
+  margin-bottom: 15px;
 }
 
 .job-card p {
-  margin: 8px 0;
-  font-size: 1rem;
-  color: #555;
+  font-size: 16px;
+  color: #34495e; /* Lighter dark color for job details */
+  margin: 5px 0;
 }
 
-.job-card button {
-  background-color: #ea1414;
+button {
+  padding: 10px 15px;
   border: none;
-  color: #fff;
-  padding: 12px 20px;
-  border-radius: 8px;
+  border-radius: 5px;
+  color: #ffffff;
+  font-size: 16px;
+  margin-bottom: 10px;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-  margin: 5px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.3s;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.job-card button:hover {
-  background-color: #0056b3;
-  transform: scale(1.05);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+button:hover {
+  transform: translateY(-2px);
+}
+
+button:first-of-type {
+  background-color: #3498db; /* Edit button */
+}
+
+button:first-of-type:hover {
+  background-color: #2980b9;
+}
+
+button:last-of-type {
+  background-color: #e74c3c; /* Delete button */
+}
+
+button:last-of-type:hover {
+  background-color: #c0392b;
 }
 
 .edit-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   margin-top: 30px;
-  padding: 25px;
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-  max-width: 700px;
-  margin: 20px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  width: 400px; /* Adjusted width for form */
 }
 
 .edit-form h2 {
-  margin-bottom: 20px;
-  font-size: 2rem;
-  color: #333;
+  font-size: 24px;
   font-weight: 600;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 .edit-form label {
   display: block;
-  margin-bottom: 12px;
-  font-size: 1rem;
+  margin-bottom: 15px;
+  font-size: 16px;
   color: #333;
 }
 
 .edit-form input {
   width: 100%;
-  padding: 14px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-sizing: border-box;
-  margin-top: 5px;
-  font-size: 1rem;
+  padding: 10px;
+  border: 1px solid #d1d1d1;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #333;
 }
 
 .edit-form button {
-  background-color: #28a745;
-  border: none;
-  color: #fff;
-  padding: 12px 20px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-  margin-right: 10px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.edit-form button:hover {
-  background-color: #218838;
-  transform: scale(1.05);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  margin-top: 10px;
 }
 
 .cancel-button {
-  background-color: #dc3545;
+  background-color: #95a5a6; /* Cancel button */
 }
 
 .cancel-button:hover {
-  background-color: #c82333;
-  transform: scale(1.05);
+  background-color: #7f8c8d;
 }

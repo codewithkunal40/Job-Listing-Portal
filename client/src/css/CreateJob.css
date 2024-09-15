@@ -9,11 +9,11 @@ body {
 /* Container styling */
 .create-job-container {
   max-width: 700px; /* Compact width */
-  margin: auto; /* Center horizontally with some margin at the top */
-  padding: 20px;
+  margin: 40px auto; /* Center horizontally with margin at top and bottom */
+  padding: 30px; /* Increased padding for more spacing */
   background: #ffffff; /* White background for the form */
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  border-radius: 12px; /* More rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Slightly deeper shadow */
   background: linear-gradient(
     135deg,
     #f6cfcf,
@@ -25,16 +25,17 @@ body {
 .create-job-container h2 {
   text-align: center;
   color: #202124; /* Darker color for text */
-  margin-bottom: 24px; /* Space below heading */
-  font-size: 22px; /* Font size */
-  font-weight: 500; /* Semi-bold text */
+  margin-bottom: 32px; /* Increased space below heading */
+  font-size: 24px; /* Slightly larger font size */
+  font-weight: 600; /* Bold text */
+  letter-spacing: 0.5px; /* Slightly spaced out letters */
 }
 
 /* Form styling */
 .create-job-form {
   display: flex;
   flex-direction: column;
-  gap: 16px; /* Space between form elements */
+  gap: 20px; /* Increased space between form elements */
 }
 
 /* Form group styling */
@@ -45,21 +46,21 @@ body {
 
 /* Label styling */
 .form-group label {
-  font-weight: 500; /* Semi-bold text */
-  margin-bottom: 8px; /* Space below label */
+  font-weight: 600; /* Bold text */
+  margin-bottom: 10px; /* Space below label */
   color: #202124; /* Dark text color */
 }
 
 /* Input and select styling */
 .form-group input,
 .form-group select {
-  padding: 12px;
-  border: 1px solid #e0e0e0; /* Light gray border */
-  border-radius: 4px; /* Rounded corners */
-  font-size: 14px; /* Font size */
+  padding: 14px; /* Increased padding */
+  border: 1px solid #d0d0d0; /* Slightly darker border */
+  border-radius: 6px; /* More rounded corners */
+  font-size: 15px; /* Slightly larger font size */
   color: #202124; /* Dark text color */
   background-color: #ffffff; /* White background */
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1); /* Subtle inner shadow */
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle inner shadow */
   transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transitions */
 }
 
@@ -67,31 +68,34 @@ body {
 .form-group input:focus,
 .form-group select:focus {
   border-color: #4285f4; /* Blue border on focus */
-  box-shadow: 0 0 4px rgba(66, 133, 244, 0.2); /* Blue glow effect */
+  box-shadow: 0 0 6px rgba(66, 133, 244, 0.3); /* Blue glow effect */
   outline: none; /* Remove default outline */
 }
 
 /* Button styling */
 .btn-submit {
-  padding: 12px;
+  padding: 14px; /* Increased padding */
   background-color: #4285f4; /* Google blue */
   color: #ffffff; /* White text color */
   border: none;
-  border-radius: 4px; /* Rounded corners */
+  border-radius: 6px; /* More rounded corners */
   font-size: 16px; /* Font size */
-  font-weight: 500; /* Semi-bold text */
+  font-weight: 600; /* Bold text */
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s; /* Smooth transitions */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
 }
 
 /* Button hover effect */
 .btn-submit:hover {
   background-color: #357ae8; /* Darker blue on hover */
-  transform: translateY(-1px); /* Slight lift effect */
+  transform: translateY(-2px); /* Slight lift effect */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
 }
 
 /* Button active effect */
 .btn-submit:active {
   background-color: #3367d6; /* Even darker blue on click */
   transform: translateY(0); /* Return to original position */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
 }
