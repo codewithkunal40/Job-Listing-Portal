@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route, } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Layout from "../components/Layout/Layout";
 import DashboardHome from "./DashboardHome";
 import JobSeekerProfile from "./jobSeekerProfile";
@@ -17,14 +17,13 @@ const JobDashboard = () => {
         <div className="dashboard-content">
           <Routes>
             <Route path="/" element={<DashboardHome />} />
-            <Route path="/JobSeekerProfile" element={< JobSeekerProfile />} />
+            <Route path="/JobSeekerProfile" element={<JobSeekerProfile />} />
 
             <Route path="/job-list" element={<JobList />} />
             <Route path="/job-stats" element={<JobStats />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/logout" element={<Logout />} />
             <Route path="/contact" element={<Contactform />} />
-            <Route path="/about" element={<About />} />
           </Routes>
         </div>
       </div>
