@@ -1,6 +1,4 @@
 import userModel from "../models/userModel.js";
-import fs from "fs";
-import path from "path";
 import { uploadResume } from "../middlewares/resumeUpload.js";
 export const updateUserController = async (req, res, next) => {
   const { name, email, lastname, location, phoneNumber, role } = req.body;
@@ -155,42 +153,5 @@ export const uploadResumeController = async (req, res) => {
     });
   } catch (error) {
     return res.status(500).json({ message: error.message });
-  }
-};
-
-import { fileURLToPath } from "url";
-
-// Manually define __dirname
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-export const getResumeController = async (req, res) => {
-  try {
-    const userId = req.user.userId;
-    console.log(`Fetching reume for userId:${userId}`);
-    // Get userId from route parameters
-    const user = await userModel.findById(userId);
-
-    if (!user || !user.resume) {
-      return res
-        .status(404)
-        .json({ message: "Resume not found for this user" });
-    }
-
-    // Adjust the path based on where you're storing the file
-    const resumePath = path.join(__dirname, "..", user.resume);
-
-    // Check if file exists
-    if (!fs.existsSync(resumePath)) {
-      return res.status(404).json({ message: "Resume file not found" });
-    }
-
-    // Send the file
-    res.sendFile(resumePath);
-  } catch (error) {
-    console.error("Error fetching resume:", error); // Improved logging
-    return res
-      .status(500)
-      .json({ message: "Server error", error: error.message });
   }
 };

@@ -82,22 +82,6 @@ const EmployerLayout = ({ children }) => {
               </Link>
             </li>
             <li>
-              <Link
-                to="/employer-dashboard/upload-resume"
-                className="menu-item"
-              >
-                upload-resume
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/employer-dashboard/resume-display/:id"
-                className="menu-item"
-              >
-                Display-resume
-              </Link>
-            </li>
-            <li>
               <Link to="/employer-dashboard/logout" className="menu-item">
                 Logout
               </Link>

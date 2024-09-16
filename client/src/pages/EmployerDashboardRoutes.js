@@ -9,8 +9,6 @@ import JobStats from "./JobStats";
 import Logout from "./Logout";
 import EmployerDashboard from "./EmployerDashboard";
 import ViewApplications from "./ViewApplications";
-import UploadResume from "./UploadResume";
-import ResumeDisplay from "./ResumeDisplay";
 
 const EmployerDashboardRoutes = () => {
   return (
@@ -22,8 +20,6 @@ const EmployerDashboardRoutes = () => {
       <Route path="/settings" element={<Settings />} />
       <Route path="/job-stats" element={<JobStats />} />
       <Route path="/logout" element={<Logout />} />
-      <Route path="/resume-display/:id" element={<ResumeDisplay />} />
-      <Route path="/upload-resume" element={<UploadResume />} />
       <Route path="/applicants" element={<ViewApplications />} />
     </Routes>
   );
