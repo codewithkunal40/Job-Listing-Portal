@@ -14,7 +14,7 @@ const EmployerDashboardRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<EmployerDashboard />} />
-      <Route path="/profile" element={<Profile />} />
+      <Route path="/profile/:id" element={<Profile />} />
       <Route path="/create-job" element={<CreateJob />} />
       <Route path="/job-list" element={<JobList />} />
       <Route path="/settings" element={<Settings />} />

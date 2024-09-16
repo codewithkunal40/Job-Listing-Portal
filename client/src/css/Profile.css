@@ -1,0 +1,109 @@
+/* Profile page container */
+.profile-container {
+  margin: 0 auto;
+  max-width: 700px;
+  padding: 30px;
+  background: linear-gradient(135deg, #f7f7f7, #3a3636);
+  border-radius: 15px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Profile card */
+.profile-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Profile details */
+.profile-details {
+  margin-bottom: 20px;
+}
+
+.profile-name {
+  font-size: 2rem;
+  color: #002a6d;
+  margin-bottom: 10px;
+}
+
+.profile-email,
+.profile-location,
+.profile-phone,
+.profile-role {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+/* Edit Form */
+.update-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.update-button,
+.cancel-button,
+.edit-button,
+.delete-button {
+  background-color: #003366;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-right: 10px; /* Spacing between buttons */
+}
+
+.update-button {
+  background-color: #004080;
+}
+
+.cancel-button {
+  background-color: #d9534f;
+}
+
+.delete-button {
+  background-color: #b30000;
+}
+
+.edit-button {
+  background-color: #0056b3;
+}
+
+.update-button:hover,
+.cancel-button:hover,
+.edit-button:hover,
+.delete-button:hover {
+  transform: scale(1.05);
+}
+
+.update-button:focus,
+.cancel-button:focus,
+.edit-button:focus,
+.delete-button:focus {
+  outline: none;
+}
+
+.delete-button:hover {
+  background-color: #d30000;
+}
