@@ -23,7 +23,6 @@ const JobDashboard = () => {
             <Route path="/settings" element={<Settings />} />
             <Route path="/logout" element={<Logout />} />
             <Route path="/contact" element={<Contactform />} />
-            <Route path="/about" element={<About />} />
           </Routes>
         </div>
       </div>
