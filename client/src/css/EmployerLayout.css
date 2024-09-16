@@ -1,119 +1,123 @@
-/* css/EmployerLayout.css */
+/* Main Layout Container */
 .layout-container {
   display: flex;
   min-height: 100vh;
-  background: #e0e6ed; /* Light background color for the entire layout */
+  background-color: #e0e6ed; /* Keeping light background for the layout */
 }
 
+/* Sidebar Styles */
 .sidebar {
   width: 260px;
-  background: linear-gradient(
-    135deg,
-    #1b1b1b,
-    #0f060b
-  ); /* Gradient background for a premium look */
-  padding: 20px; /* Increased padding for better spacing */
-  box-shadow: 4px 0 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
-  border-right: 1px solid #333; /* Darker border for better separation */
-  position: fixed; /* Keeps the sidebar fixed on larger screens */
+  background: linear-gradient(135deg, #1b1b1b, #0f060b); /* Premium gradient */
+  padding: 20px;
+  box-shadow: 4px 0 12px rgba(0, 0, 0, 0.2); /* Deep shadow for depth */
+  border-right: 1px solid #333;
+  position: fixed;
   top: 0;
   left: 0;
   min-height: 100vh;
-  z-index: 1000; /* Keeps the sidebar above other content */
-  transition: transform 0.3s ease; /* Smooth transition for sidebar toggling */
+  z-index: 1000; /* Ensures sidebar stays on top */
+  transition: transform 0.3s ease; /* Smooth sidebar transition */
 }
 
+/* Collapsed Sidebar */
 .sidebar.collapsed {
-  transform: translateX(-100%); /* Hide the sidebar off-screen */
+  transform: translateX(-100%); /* Hide the sidebar */
 }
 
+/* Sidebar Title with Logo */
 .sidebar-title img {
-  width: 80px; /* Adjusted size for better appearance */
-  margin-bottom: 20px; /* Spacing below the logo */
+  width: 80px;
+  margin-bottom: 20px; /* Space below logo */
 }
 
+/* Menu Styling */
 .menu ul {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
   margin: 0;
 }
 
+/* Menu Item Styles */
 .menu-item {
   display: flex;
   align-items: center;
   padding: 12px 20px;
   color: #f4f4f4; /* Light text color */
   text-decoration: none;
-  border-radius: 8px; /* Rounded corners */
-  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+  border-radius: 8px; /* Rounded menu items */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transitions */
   margin-bottom: 10px; /* Spacing between menu items */
 }
 
+/* Menu Item Hover Effect */
 .menu-item:hover {
-  background-color: #5a2a66; /* Slightly darker background on hover */
-  color: #fff; /* Keep text color white on hover */
+  background-color: #5a2a66; /* Darker background on hover */
+  color: #fff; /* White text on hover */
 }
 
+/* Icon Inside Menu Item */
 .menu-item i {
-  margin-right: 12px; /* Spacing between icon and text */
+  margin-right: 12px; /* Space between icon and text */
   font-size: 20px; /* Icon size */
 }
 
+/* Main Content Area */
 .main-content {
   flex: 1;
   padding: 20px;
-  background: #ffffff; /* White background for main content */
-  margin-left: 260px; /* Offset content by the width of the sidebar */
+  background-color: #ffffff; /* White background */
+  margin-left: 260px; /* Space for sidebar */
   box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.1); /* Inset shadow for depth */
-  border-radius: 12px; /* Rounded corners for the main content */
+  border-radius: 12px; /* Rounded corners */
 }
 
+/* Heading Styling */
 .heading {
-  margin-bottom: 30px; /* Increased spacing below the heading */
-  font-size: 26px; /* Larger font size for emphasis */
-  color: #333; /* Darker text color for contrast */
-  font-weight: 700; /* Bold text */
+  margin-bottom: 30px; /* Space below heading */
+  font-size: 26px; /* Large heading font */
+  color: #333; /* Darker text */
+  font-weight: 700; /* Bold heading */
 }
 
+/* Text Center Alignment */
 .text-center {
   text-align: center;
 }
 
-/* Responsive Styles */
-
-/* Mobile screens */
+/* Responsive Styles for Mobile (max-width: 768px) */
 @media (max-width: 768px) {
   .sidebar {
     width: 100%;
     padding: 15px;
     border-right: none;
     box-shadow: none;
-    position: static; /* Sidebar is not fixed on small screens */
-    transform: translateX(0); /* Ensure it's in the view */
+    position: static; /* Sidebar not fixed on small screens */
+    transform: translateX(0); /* Ensure visible */
   }
 
   .sidebar.collapsed {
-    transform: translateX(-100%); /* Hide the sidebar off-screen */
+    transform: translateX(-100%); /* Hide sidebar on mobile */
   }
 
   .main-content {
-    margin-left: 0; /* Remove the offset for mobile screens */
-    padding: 10px; /* Adjust padding for smaller screens */
+    margin-left: 0; /* No sidebar margin */
+    padding: 10px; /* Smaller padding on mobile */
   }
 
   .sidebar-toggle {
-    display: block; /* Show the toggle button on mobile */
+    display: block; /* Show toggle on mobile */
   }
 }
 
-/* Tablet screens */
+/* Responsive Styles for Tablet (max-width: 1024px) */
 @media (max-width: 1024px) {
   .sidebar {
     width: 220px;
-    padding: 15px;
+    padding: 15px; /* Smaller padding for tablets */
   }
 
   .main-content {
-    margin-left: 220px; /* Adjust margin for smaller sidebar */
+    margin-left: 220px; /* Adjust content margin for smaller sidebar */
   }
 }
