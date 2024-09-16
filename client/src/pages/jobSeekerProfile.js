@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-const SeekerProfile = () => {
+import axios from "axios";
+
+const JobSeekerProfile = () => {
   return (
     <div classNameName="profile-container">
       <header className="profile-header">
@@ -52,4 +54,4 @@ const SeekerProfile = () => {
   );
 };
 
-export default SeekerProfile;
+export default JobSeekerProfile;
