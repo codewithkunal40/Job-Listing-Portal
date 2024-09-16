@@ -2,7 +2,6 @@ import express from "express";
 import { userAuth } from "../middlewares/authMiddlware.js";
 import {
   deleteUserController,
-  getResumeController,
   getUserController,
   getUserOnIdController,
   updateUserController,
@@ -160,6 +159,5 @@ router.get("/get-user", userAuth, getUserController);
 router.get("/get-user/:id", userAuth, getUserOnIdController);
 router.post("/upload-resume", uploadResume, userAuth, uploadResumeController);
 router.delete("/delete-user/:id", userAuth, deleteUserController);
-router.get("/get-resume/:id", userAuth, getResumeController);
 
 export default router;

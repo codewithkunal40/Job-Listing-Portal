@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Line, Bar, Pie, Doughnut, Radar } from "react-chartjs-2";
+import { Line, Bar, Pie } from "react-chartjs-2";
 import "chart.js/auto"; // Ensure Chart.js is imported for chart types
 import "../css/JobStats.css"; // Import the CSS file
 
@@ -108,42 +108,6 @@ const JobStats = () => {
     ],
   };
 
-  const doughnutChartData = {
-    labels: groupedLabels,
-    datasets: [
-      {
-        label: "Jobs by Type and Status (Doughnut)",
-        data: groupedData,
-        backgroundColor: [
-          "#FF6384",
-          "#36A2EB",
-          "#FFCE56",
-          "#4BC0C0",
-          "#F782E4",
-        ],
-        borderColor: "#fff",
-        borderWidth: 1,
-      },
-    ],
-  };
-
-  const radarChartData = {
-    labels: groupedLabels,
-    datasets: [
-      {
-        label: "Jobs by Type and Status (Radar)",
-        data: groupedData,
-        backgroundColor: "rgba(255,99,132,0.2)",
-        borderColor: "#ff6384",
-        borderWidth: 2,
-        pointBackgroundColor: "#ff6384",
-        pointBorderColor: "#fff",
-        pointBorderWidth: 2,
-        pointHoverRadius: 5,
-      },
-    ],
-  };
-
   const handleFilterChange = (e) => {
     setFilters({
       ...filters,
@@ -198,16 +162,6 @@ const JobStats = () => {
         <div className="chart-item">
           <h2>Grouped Jobs</h2>
           <Pie data={groupedChartData} options={pieOptions} />
-        </div>
-
-        <div className="chart-item">
-          <h2>Doughnut Chart</h2>
-          <Doughnut data={doughnutChartData} options={pieOptions} />
-        </div>
-
-        <div className="chart-item">
-          <h2>Radar Chart</h2>
-          <Radar data={radarChartData} options={chartOptions} />
         </div>
       </div>
     </div>
