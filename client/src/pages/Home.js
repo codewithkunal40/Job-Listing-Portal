@@ -3,7 +3,7 @@ import "../css/Home.css";
 import { Link } from "react-router-dom";
 import ui from "../assets/images/image copy.png";
 import wedev from "../assets/images/image copy 2.png";
-import Footer from "../components/Footer";
+
 const Home = () => {
   return (
     <div className="home">

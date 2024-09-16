@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
-import "../../css/EmployerLayout.css"; // Ensure this CSS file exists and contains necessary styles
+import "../../css/EmployerLayout.css";
 import logo from "../../assets/images/image.png";
 
 const EmployerLayout = ({ children }) => {
