@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from "react";
-
-import axios from "axios";
+import React from "react";
 
 const JobSeekerProfile = () => {
   return (
@@ -10,12 +8,7 @@ const JobSeekerProfile = () => {
         <p>Software Engineer</p>
         <p>unknown@example.com | (123) 456-7890</p>
       </header>
-
-      <div className="profile-image">
-        <img src="profile-picture.jpg" alt="Profile Picture" />
-      </div>
-
-      <section className="profile-section">
+<section className="profile-section">
         <h2>About Me</h2>
         <p>
           Passionate software engineer with 5 years of experience in developing
