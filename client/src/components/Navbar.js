@@ -22,8 +22,9 @@ const Navbar = () => {
               <li onClick={toggleMobileMenu}>Home</li>
             </Link>
             <Link to="/About"><li onClick={toggleMobileMenu}>About</li></Link>
-            <li onClick={toggleMobileMenu}>Features</li>
-            <li onClick={toggleMobileMenu}>Resources</li>
+            
+           <Link to="/Features"><li onClick={toggleMobileMenu}>Features</li></Link>
+            <Link to="/Resources"><li onClick={toggleMobileMenu}>Resources</li></Link>
           </ul>
         </nav>
       </div>

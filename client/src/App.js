@@ -12,6 +12,8 @@ import PrivateRoute from "./components/routes/PrivateRoute";
 import PublicRoute from "./components/routes/PublicRoute";
 import EmployerLayout from "./components/Layout/EmployerLayout";
 import About from "./pages/About";
+import Features from "./pages/Features";
+import Resources from "./pages/Resources";
 
 const App = () => {
   return (
@@ -27,11 +29,35 @@ const App = () => {
             </PublicRoute>
           }
         />
+           <Route
+          path="/Login"
+          element={
+            <PublicRoute>
+              <Login />
+            </PublicRoute>
+          }
+        />
         <Route
           path="/About"
           element={
             <PublicRoute>
               <About />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/Features"
+          element={
+            <PublicRoute>
+              <Features />
+            </PublicRoute>
+          }
+        />
+         <Route
+          path="/Resources"
+          element={
+            <PublicRoute>
+              <Resources />
             </PublicRoute>
           }
         />
