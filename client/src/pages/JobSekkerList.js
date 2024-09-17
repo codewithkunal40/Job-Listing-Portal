@@ -43,6 +43,7 @@ const JobList = () => {
               <p>Description: {job.description}</p>
               <p>Type: {job.workType}</p>
               <p>Status: {job.status}</p>
+              <button className=" btn">Apply </button>
             </div>
           ))}
         </div>

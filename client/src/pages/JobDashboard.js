@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Layout from "../components/Layout/Layout";
 import DashboardHome from "./DashboardHome";
 import JobSeekerProfile from "./jobSeekerProfile";
-import JobList from "./JobList";
+
 import JobStats from "./JobStats";
 import Settings from "./Settings";
 import Logout from "./Logout";
