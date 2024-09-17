@@ -27,58 +27,40 @@ export const createJobController = async (req, res, next) => {
 
 // GET ALL JOBS
 export const getAllJobsController = async (req, res, next) => {
-  const { status, workType, search, sort, page = 1, limit = 10 } = req.query;
+  const { status, workType, search, sort } = req.query;
 
   const queryObject = {
-    createdBy: req.user.userId, // Only show jobs created by the logged-in user
+    createdBy: req.user.userId,
   };
 
-  // Filtering logic
+  // Filtering
   if (status && status !== "all") queryObject.status = status;
   if (workType && workType !== "all") queryObject.workType = workType;
-  if (search) queryObject.position = { $regex: search, $options: "i" }; // Case-insensitive search
+  if (search) queryObject.position = { $regex: search, $options: "i" };
 
   try {
     let queryResult = jobsModel.find(queryObject);
 
-    // Sorting logic
-    switch (sort) {
-      case "latest":
-        queryResult = queryResult.sort("-createdAt");
-        break;
-      case "oldest":
-        queryResult = queryResult.sort("createdAt");
-        break;
-      case "a-z":
-        queryResult = queryResult.sort("position");
-        break;
-      case "z-a":
-        queryResult = queryResult.sort("-position");
-        break;
-      default:
-        queryResult = queryResult.sort("-createdAt"); // Default to latest jobs
-    }
+    // Sorting
+    if (sort === "latest") queryResult = queryResult.sort("-createdAt");
+    if (sort === "a-z") queryResult = queryResult.sort("position");
+    if (sort === "oldest") queryResult = queryResult.sort("createdAt");
+    if (sort === "z-a") queryResult = queryResult.sort("-position");
 
-    // Pagination logic
+    // Pagination
+    const page = Number(req.query.page) || 1;
+    const limit = Number(req.query.limit) || 10;
     const skip = (page - 1) * limit;
 
-    queryResult = queryResult.skip(skip).limit(Number(limit));
+    queryResult = queryResult.skip(skip).limit(limit);
 
-    // Execute query and count total jobs
     const jobs = await queryResult;
     const totalJobs = await jobsModel.countDocuments(queryObject);
-    const numOfPages = Math.ceil(totalJobs / limit);
+    const numOfPage = Math.ceil(totalJobs / limit);
 
-    res.status(200).json({
-      totalJobs,
-      jobs,
-      numOfPages,
-      currentPage: Number(page),
-    });
+    res.status(200).json({ totalJobs, jobs, numOfPage });
   } catch (error) {
-    return res
-      .status(500)
-      .json({ message: "Server Error: Failed to fetch jobs" });
+    next(error);
   }
 };
 
@@ -245,5 +227,14 @@ export const jobStatsController = async (req, res) => {
       message: "Something went wrong while fetching job stats",
       error: error.message,
     });
+  }
+};
+
+export const getAllJobsForSeekerController = async (req, res, next) => {
+  try {
+    const jobs = await jobsModel.find({});
+    res.status(200).json({ jobs });
+  } catch (error) {
+    next(error);
   }
 };

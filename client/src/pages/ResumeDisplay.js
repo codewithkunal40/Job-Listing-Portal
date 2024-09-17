@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 
 function ResumeDisplay() {
   const [resumeUrl, setResumeUrl] = useState("");
-  const { id } = useParams();
+  const { id } = useParams(); // Extract the ID from the URL parameters
 
   useEffect(() => {
     const fetchResume = async () => {

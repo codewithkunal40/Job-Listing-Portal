@@ -26,9 +26,9 @@ const ViewApplications = () => {
           },
         });
         setUsers(response.data.data);
-        setLoading(false);
       } catch (err) {
-        setError(err.message);
+        setError("Failed to load users");
+      } finally {
         setLoading(false);
       }
     };
@@ -52,23 +52,20 @@ const ViewApplications = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem("token");
-      await axios.put(
-        `/api/v1/user/update-user`,
-        updatedUser, // Send only the updated fields, user ID is managed by the server
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const { _id } = editingUser; // Get user ID from editingUser
+      await axios.put(`/api/v1/user/update-user/${_id}`, updatedUser, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       setUsers(
         users.map((user) =>
-          user._id === editingUser._id ? { ...user, ...updatedUser } : user
+          user._id === _id ? { ...user, ...updatedUser } : user
         )
       );
       setEditingUser(null);
     } catch (err) {
-      setError(err.message);
+      setError("Failed to update user");
     }
   };
 
@@ -82,12 +79,12 @@ const ViewApplications = () => {
       });
       setUsers(users.filter((user) => user._id !== id));
     } catch (err) {
-      setError(err.message);
+      setError("Failed to delete user");
     }
   };
 
   if (loading) return <p className="loading">Loading users...</p>;
-  if (error) return <p className="error">Error: {error}</p>;
+  if (error) return <p className="error">{error}</p>;
 
   return (
     <div className="view-applications">

@@ -6,11 +6,12 @@ import logo from "../../assets/images/image.png";
 
 const EmployerLayout = ({ children }) => {
   const [name, setName] = useState("");
-  const { id } = useParams();
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [isSidebarVisible, setIsSidebarVisible] = useState(true);
+  const { id } = useParams();
 
   useEffect(() => {
-    // Fetch user data when the component mounts
     const fetchUserData = async () => {
       try {
         const response = await axios.get(`/api/v1/user/get-user/${id}`, {
@@ -22,14 +23,18 @@ const EmployerLayout = ({ children }) => {
           setName(response.data.data.name);
         } else {
           console.error("Failed to fetch user data:", response.data.message);
+          setError("Failed to fetch user data");
         }
       } catch (error) {
         console.error("Failed to fetch user data", error);
+        setError("An error occurred while fetching user data");
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchUserData();
-  }, [id]); // Add id as dependency to refetch if id changes
+  }, [id]);
 
   const toggleSidebar = () => {
     setIsSidebarVisible(!isSidebarVisible);
@@ -52,7 +57,10 @@ const EmployerLayout = ({ children }) => {
               </Link>
             </li>
             <li>
-              <Link to="/employer-dashboard/profile/:id" className="menu-item">
+              <Link
+                to={`/employer-dashboard/profile/${id}`}
+                className="menu-item"
+              >
                 Profile
               </Link>
             </li>
@@ -68,7 +76,7 @@ const EmployerLayout = ({ children }) => {
             </li>
             <li>
               <Link to="/employer-dashboard/applicants" className="menu-item">
-                Job applicants
+                Job Applicants
               </Link>
             </li>
             <li>
@@ -86,15 +94,15 @@ const EmployerLayout = ({ children }) => {
                 to="/employer-dashboard/upload-resume"
                 className="menu-item"
               >
-                upload-resume
+                Upload Resume
               </Link>
             </li>
             <li>
               <Link
-                to="/employer-dashboard/resume-display/:id"
+                to={`/employer-dashboard/resume-display/${id}`}
                 className="menu-item"
               >
-                Display-resume
+                Display Resume
               </Link>
             </li>
             <li>
@@ -108,7 +116,13 @@ const EmployerLayout = ({ children }) => {
 
       <main className="main-content">
         <div className="heading text-center">
-          <h1>Welcome to the Employer Dashboard, {name || "User"}</h1>
+          {loading ? (
+            <p>Loading user data...</p>
+          ) : error ? (
+            <p className="error">{error}</p>
+          ) : (
+            <h1>Welcome to the Employer Dashboard, {name || "User"}</h1>
+          )}
         </div>
         {children}
       </main>

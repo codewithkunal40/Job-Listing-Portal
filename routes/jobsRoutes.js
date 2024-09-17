@@ -4,6 +4,7 @@ import {
   createJobController,
   deleteJobController,
   getAllJobsController,
+  getAllJobsForSeekerController,
   jobStatsController,
   updateJobController,
 } from "../controllers/jobsController.js";
@@ -220,5 +221,6 @@ router.get("/get-job", userAuth, getAllJobsController);
 router.patch("/update-job/:id", userAuth, updateJobController);
 router.delete("/delete-job/:id", userAuth, deleteJobController);
 router.get("/job-stats", userAuth, jobStatsController);
+router.get("/get-all-jobs", getAllJobsForSeekerController);
 
 export default router;
