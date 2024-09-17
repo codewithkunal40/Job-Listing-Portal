@@ -8,13 +8,13 @@ const JobSeekerProfile = () => {
         <p>Software Engineer</p>
         <p>unknown@example.com | (123) 456-7890</p>
       </header>
-<section className="profile-section">
+      <section className="profile-section">
         <h2>About Me</h2>
         <p>
           Passionate software engineer with 5 years of experience in developing
           scalable applications. Proficient in JavaScript, Python, and React.
-          Adept at collaborating with cross-functional teams to deliver high-quality
-          software solutions.
+          Adept at collaborating with cross-functional teams to deliver
+          high-quality software solutions.
         </p>
       </section>
 
@@ -29,17 +29,9 @@ const JobSeekerProfile = () => {
         </ul>
       </section>
 
-      
-
-    
-
       <section className="profile-section">
         <h2>Resume</h2>
-        <a
-          href="resume.pdf"
-          className="resume-button"
-          download
-        >
+        <a href="resume.pdf" className="resume-button" download>
           Download Resume
         </a>
       </section>
