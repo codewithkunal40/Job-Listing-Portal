@@ -1,42 +1,124 @@
+/* Enhanced Features Section CSS */
 .features-section {
-  /* Gradient background for the whole section */
-  background: linear-gradient(135deg, #f0f8ff, #f9f9f9);
-  padding: 60px 20px;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 15px;
+  background: linear-gradient(135deg, #003366, #000000);
+  /* Enhanced gradient background for the whole section */
 }
 
 .section-title {
   text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-  color: #333;
+  margin-top: 30px;
+  font-size: 3rem; /* Increased font size */
+  margin-bottom: 20px;
+  color: #ccdceb;
+  letter-spacing: 1.2px; /* Slight letter spacing for elegance */
+  font-weight: 700; /* Bold for better emphasis */
+  text-transform: uppercase; /* Uppercase for a bold, modern look */
 }
 
 .section-subtitle {
   text-align: center;
-  font-size: 1.2rem;
-  margin-bottom: 40px;
-  color: #777;
+  font-size: 1.4rem; /* Slightly larger subtitle */
+  margin-bottom: 50px; /* Increased space between subtitle and features */
+  color: #7f8c8d;
+  font-style: italic; /* Subtle emphasis */
 }
 
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(280px, 1fr)
+  ); /* Slightly smaller min width for better fitting */
+  gap: 35px; /* Increased gap for better spacing */
 }
 
 .feature-item {
-  /* Gradient background for feature items */
-  background: linear-gradient(135deg, #ffffff, #e0e0e0);
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  /* Enhanced gradient background for feature items */
+  background: linear-gradient(135deg, #ffffff, #f0f0f0);
+  padding: 40px;
+  border-radius: 15px; /* Smoother rounded corners */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Enhanced shadow */
   text-align: center;
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.4s ease, box-shadow 0.4s ease; /* Smooth transition */
+  position: relative; /* Position relative for potential content animations */
 }
 
+.feature-item:hover {
+  transform: translateY(-10px); /* Lift the item on hover */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+}
+
+.feature-item h3 {
+  font-size: 1.8rem;
+  color: #34495e;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.feature-item p {
+  font-size: 1.1rem;
+  color: #7f8c8d;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.feature-item a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  box-shadow: 0 4px 8px rgba(52, 152, 219, 0.2);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-item a:hover {
+  background-color: #2980b9;
+  box-shadow: 0 6px 12px rgba(52, 152, 219, 0.3);
+}
+
+/* Add responsiveness for smaller screens */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2.2rem; /* Adjust title size for smaller screens */
+    margin-bottom: 15px;
+  }
+
+  .section-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 30px; /* Adjust margin for smaller screens */
+  }
+
+  .feature-item {
+    padding: 25px;
+  }
+
+  .feature-item h3 {
+    font-size: 1.5rem;
+  }
+
+  .feature-item p {
+    font-size: 1rem;
+  }
+}
+
+/* Add subtle animation on feature items */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.feature-item {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Dark mode support */

@@ -1,6 +1,7 @@
 // ResourcesPage.js
 import React from "react";
-import "../css/Resources.css"; 
+import "../css/Resources.css";
+import Navbar from "../components/Navbar";
 
 const ResourcesPage = () => {
   const resources = [
@@ -17,8 +18,7 @@ const ResourcesPage = () => {
     },
     {
       title: "Job Market Insights",
-      description:
-        "Stay up-to-date with the latest trends in the job market.",
+      description: "Stay up-to-date with the latest trends in the job market.",
       link: "https://www.linkedin.com/",
     },
     {
@@ -30,9 +30,13 @@ const ResourcesPage = () => {
 
   return (
     <div className="resources-container">
+      <Navbar />
       <h1>Job Search Resources</h1>
-      <p>Here are some helpful resources to assist you in your job search journey.</p>
-      
+      <p>
+        Here are some helpful resources to assist you in your job search
+        journey.
+      </p>
+
       <div className="resources-list">
         {resources.map((resource, index) => (
           <div className="resource-card" key={index}>

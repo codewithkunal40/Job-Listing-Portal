@@ -1,13 +1,16 @@
-import React from 'react';
+import React from "react";
 import "../css/Features.css";
-
+import Navbar from "../components/Navbar";
 const FeaturesSection = () => {
   return (
     <section className="features-section">
+      <Navbar />
       <div className="container">
         <h2 className="section-title">Our Features</h2>
+
         <p className="section-subtitle">
-          Explore a wide range of features designed to make job searching and hiring easier for both applicants and employers.
+          Explore a wide range of features designed to make job searching and
+          hiring easier for both applicants and employers.
         </p>
         <div className="features-grid">
           {/* Feature 1 */}
@@ -17,7 +20,9 @@ const FeaturesSection = () => {
             </div>
             <h3 className="feature-title">Apply for Jobs</h3>
             <p className="feature-description">
-              Browse through thousands of job listings and apply directly with a few clicks. Our intuitive platform allows you to find your dream job easily.
+              Browse through thousands of job listings and apply directly with a
+              few clicks. Our intuitive platform allows you to find your dream
+              job easily.
             </p>
           </div>
 
@@ -28,7 +33,8 @@ const FeaturesSection = () => {
             </div>
             <h3 className="feature-title">Upload Resumes</h3>
             <p className="feature-description">
-              Upload your resume in seconds and get discovered by top employers. Our system makes it easy for you to showcase your skills.
+              Upload your resume in seconds and get discovered by top employers.
+              Our system makes it easy for you to showcase your skills.
             </p>
           </div>
 
@@ -39,7 +45,9 @@ const FeaturesSection = () => {
             </div>
             <h3 className="feature-title">Employers Add Jobs</h3>
             <p className="feature-description">
-              Employers can easily post job openings and manage applicants. Find the perfect candidate with our advanced search and filtering options.
+              Employers can easily post job openings and manage applicants. Find
+              the perfect candidate with our advanced search and filtering
+              options.
             </p>
           </div>
 
@@ -50,7 +58,8 @@ const FeaturesSection = () => {
             </div>
             <h3 className="feature-title">Check Job Status</h3>
             <p className="feature-description">
-              Keep track of the jobs you've applied for. Know the status of your application with real-time updates from employers.
+              Keep track of the jobs you've applied for. Know the status of your
+              application with real-time updates from employers.
             </p>
           </div>
 
@@ -61,7 +70,8 @@ const FeaturesSection = () => {
             </div>
             <h3 className="feature-title">Profile Management</h3>
             <p className="feature-description">
-              Manage your profile and keep your information up to date. Your profile helps you get noticed by potential employers.
+              Manage your profile and keep your information up to date. Your
+              profile helps you get noticed by potential employers.
             </p>
           </div>
 
@@ -72,7 +82,9 @@ const FeaturesSection = () => {
             </div>
             <h3 className="feature-title">Robust Features</h3>
             <p className="feature-description">
-              Enjoy a feature-rich platform designed to simplify job searching and hiring. Our tools help both applicants and employers streamline the process.
+              Enjoy a feature-rich platform designed to simplify job searching
+              and hiring. Our tools help both applicants and employers
+              streamline the process.
             </p>
           </div>
         </div>
