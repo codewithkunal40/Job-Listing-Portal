@@ -1,103 +1,50 @@
-/* Full-page gradient background */
-
-/* About container styles */
-.about-container {
-  height: auto;
-  background: linear-gradient(135deg, #003366, #000000);
-  border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
-  padding: 50px; /* Consistent padding */
-  margin: 20px; /* Add margin to the container */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #002244; /* Dark blue background */
+  color: #ffffff; /* White text color */
 }
 
-.about-container:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+/* Container */
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header styles */
+.about-header {
+  text-align: center;
+  margin-bottom: 40px;
 }
 
 .about-header h1 {
-  text-align: center;
-  font-size: 3.2rem;
-  color: #fff;
-  margin-bottom: 30px;
-  letter-spacing: 1.5px;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-  font-weight: 700;
+  font-size: 3rem;
+  color: #ffffff; /* White text */
 }
 
+/* Content styles */
 .about-content {
-  font-size: 1.3rem;
-  line-height: 1.8;
-  color: #f0f0f0;
-  padding: 0 40px;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+  background: #003366; /* Slightly different shade of dark blue */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 .about-content p {
-  margin-bottom: 30px;
+  font-size: 1.1rem;
+  color: #d3d3d3; /* Light gray for readability */
+  line-height: 1.6;
+  margin-bottom: 20px;
 }
 
 .about-content strong {
-  color: #ffdd67;
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+  color: #ffffff; /* White text for strong elements */
 }
 
 .about-content em {
   display: block;
-  margin-top: 50px;
-  text-align: right;
-  color: #f7efef;
+  text-align: center;
   font-style: italic;
-  font-size: 1.2rem;
-  letter-spacing: 1.2px;
-}
-
-/* Media queries for responsiveness */
-@media (max-width: 768px) {
-  .about-container {
-    padding: 30px;
-    margin: 10px;
-  }
-
-  .about-header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 25px;
-  }
-
-  .about-content {
-    font-size: 1.1rem;
-    padding: 0 25px;
-  }
-
-  .about-content em {
-    margin-top: 40px;
-    font-size: 1.05rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .about-container {
-    padding: 20px;
-    margin: 10px;
-  }
-
-  .about-header h1 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-  }
-
-  .about-content {
-    font-size: 1rem;
-    padding: 0 15px;
-  }
-
-  .about-content p {
-    margin-bottom: 20px;
-  }
-
-  .about-content em {
-    margin-top: 30px;
-    font-size: 1rem;
-  }
+  margin-top: 20px;
 }

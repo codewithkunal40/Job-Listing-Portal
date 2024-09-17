@@ -1,5 +1,5 @@
 import React from "react";
-
+import "../css/jobSeekerProfile.css";
 const JobSeekerProfile = () => {
   return (
     <div classNameName="profile-container">
