@@ -17,8 +17,7 @@ const JobDashboard = () => {
         <div className="dashboard-content">
           <Routes>
             <Route path="/" element={<DashboardHome />} />
-            <Route path="/JobSeekerProfile" element={<JobSeekerProfile />} />
-
+            <Route path="/jobseeker-profile" element={<JobSeekerProfile />} />
             <Route path="/job-list" element={<JobList />} />
             <Route path="/job-stats" element={<JobStats />} />
             <Route path="/settings" element={<Settings />} />
