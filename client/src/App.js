@@ -11,6 +11,7 @@ import EmployerDashboardRoutes from "./pages/EmployerDashboardRoutes";
 import PrivateRoute from "./components/routes/PrivateRoute";
 import PublicRoute from "./components/routes/PublicRoute";
 import EmployerLayout from "./components/Layout/EmployerLayout";
+import About from "./pages/About";
 
 const App = () => {
   return (
@@ -27,10 +28,10 @@ const App = () => {
           }
         />
         <Route
-          path="/login"
+          path="/About"
           element={
             <PublicRoute>
-              <Login />
+              <About />
             </PublicRoute>
           }
         />

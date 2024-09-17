@@ -1,5 +1,5 @@
 import react from "react";
-
+import "../css/About.css";
 const About = () => {
     return(
         <div className="about-container">
@@ -8,11 +8,11 @@ const About = () => {
         </div>
         <div className="about-content">
         <p>
-          Welcome to <strong>JobFinder</strong>, your number one source for all things career-related. We're dedicated
+          Welcome to <strong>Job Listing Portal</strong>, your number one source for all things career-related. We're dedicated
           to giving you the very best job listings, with a focus on quality, reliability, and ease of access.
         </p>
         <p>
-          Founded in 2024 by a passionate team, <strong>JobFinder</strong> has come a long way from its beginnings as a
+          Founded in 2024 by a passionate team, <strong>Job Listing Portal</strong> has come a long way from its beginnings as a
           simple job posting board. Our aim is to empower job seekers by providing a platform that connects them to
           their dream opportunities, whether they're looking for full-time, part-time, or freelance positions.
         </p>
@@ -22,11 +22,11 @@ const About = () => {
           country and are thrilled to turn our passion into this online platform.
         </p>
         <p>
-          We hope you enjoy using <strong>JobFinder</strong> as much as we enjoy offering it to you. If you have any
+          We hope you enjoy using <strong>Job Listing Portal</strong> as much as we enjoy offering it to you. If you have any
           questions or comments, please don't hesitate to contact us.
         </p>
         <p>
-          <em>Sincerely,<br />The JobFinder Team</em>
+          <em>Sincerely,<br />The Job Listing Portal Team</em>
         </p>
         </div>
         </div>
