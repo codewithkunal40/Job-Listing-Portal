@@ -238,3 +238,28 @@ export const getAllJobsForSeekerController = async (req, res, next) => {
     next(error);
   }
 };
+
+export const searchJobsController = async (req, res) => {
+  try {
+    const { company, position } = req.query;
+
+    const match = {};
+
+    if (company) match.company = new RegExp(company, "i"); // Case-insensitive search
+    if (position) match.position = new RegExp(position, "i"); // Case-insensitive search
+
+    const jobs = await jobsModel.find(match);
+
+    res.status(200).json({
+      success: true,
+      jobs,
+    });
+  } catch (error) {
+    console.error("Error searching for jobs:", error);
+    res.status(400).json({
+      success: false,
+      message: "Error searching for jobs",
+      error: error.message,
+    });
+  }
+};

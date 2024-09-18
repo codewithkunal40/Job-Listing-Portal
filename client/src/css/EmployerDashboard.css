@@ -1,111 +1,47 @@
-/* css/EmployerDashboard.css */
-.dashboard-container {
-  display: flex;
-  flex-direction: column; /* Stack vertically on smaller screens */
-}
-
-.sidebar {
-  width: 250px;
-  background-color: #e2baba;
-  padding: 20px;
-  min-height: 100vh; /* Full height sidebar */
-  border-right: 1px solid #ddd;
-  position: fixed; /* Fixes the sidebar in place */
-  top: 0;
-  left: 0;
-  z-index: 1000; /* Keeps the sidebar above other content */
-  transition: transform 0.3s ease; /* Smooth transition for sidebar toggling */
-}
-
-.sidebar.collapsed {
-  transform: translateX(-100%); /* Hide the sidebar off-screen */
-}
-
-.main-content {
-  flex: 1;
-  padding: 20px;
-  margin-left: 250px; /* Offset content by the width of the sidebar */
-  transition: margin-left 0.3s ease; /* Smooth transition for content shift */
-}
-
-@media (max-width: 1024px) {
-  .sidebar {
-    width: 200px;
-    padding: 15px;
-  }
-
-  .main-content {
-    margin-left: 200px; /* Offset content for smaller sidebar */
-  }
-}
-
-@media (max-width: 768px) {
-  .sidebar {
-    width: 100%;
-    height: auto; /* Allow sidebar to adjust height based on content */
-    position: relative; /* Sidebar no longer fixed */
-    transform: translateX(-100%); /* Initially hidden on mobile */
-  }
-
-  .sidebar.show {
-    transform: translateX(0); /* Show the sidebar on mobile */
-  }
-
-  .main-content {
-    margin-left: 0; /* No margin needed on mobile */
-  }
-}
-
-/* Button to toggle sidebar visibility */
-.sidebar-toggle {
-  display: none; /* Hidden by default */
-}
-
-@media (max-width: 768px) {
-  .sidebar-toggle {
-    display: block;
-    position: fixed;
-    top: 15px;
-    left: 15px;
-    z-index: 1001;
-    background-color: #826f6f;
-    color: #fff;
-    border: none;
-    padding: 10px 15px;
-    font-size: 18px;
-    cursor: pointer;
-  }
-}
-/* src/css/EmployerDashboard.css */
-
 .employer-dashboard-container {
   padding: 20px;
+  background-color: #f9f9f9;
 }
 
-.dashboard-cards {
-  display: flex;
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.dashboard-cards,
+.latest-cards,
+.insight-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
-  justify-content: space-around;
-  margin-top: 20px;
+  margin-bottom: 40px;
 }
 
 .card {
-  flex: 1;
-  padding: 20px;
-  border: 1px solid #ddd;
+  background-color: white;
   border-radius: 8px;
-  background-color: #f5f5f5;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
   text-align: center;
 }
 
-.card h2 {
+.card h2,
+.card h3 {
   margin-bottom: 10px;
-  color: #333;
 }
 
-.card p {
-  font-size: 24px;
-  font-weight: bold;
-  color: #333;
+.latest-section {
+  margin-top: 40px;
+}
+
+.insight-cards {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 768px) {
+  .dashboard-cards,
+  .latest-cards,
+  .insight-cards {
+    grid-template-columns: 1fr;
+  }
 }

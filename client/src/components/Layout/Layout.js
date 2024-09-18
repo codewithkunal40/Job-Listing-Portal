@@ -63,6 +63,11 @@ const Layout = ({ children }) => {
               </Link>
             </li>
             <li>
+              <Link to="/job-dashboard/search" className="menu-item">
+                SearchJobs
+              </Link>
+            </li>
+            <li>
               <Link
                 to="/job-dashboard/resume-seeker-upload"
                 className="menu-item"

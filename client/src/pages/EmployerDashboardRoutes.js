@@ -11,6 +11,7 @@ import EmployerDashboard from "./EmployerDashboard";
 import ViewApplications from "./ViewApplications";
 import UploadResume from "./UploadResume";
 import ResumeDisplay from "./ResumeDisplay";
+import SearchJobs from "./SearchJobs";
 
 const EmployerDashboardRoutes = () => {
   return (
@@ -21,6 +22,7 @@ const EmployerDashboardRoutes = () => {
       <Route path="/job-list" element={<JobList />} />
       <Route path="/settings" element={<Settings />} />
       <Route path="/job-stats" element={<JobStats />} />
+      <Route path="/search" element={<SearchJobs />} />
       <Route path="/logout" element={<Logout />} />
       <Route path="/resume-display/:id" element={<ResumeDisplay />} />
       <Route path="/upload-resume" element={<UploadResume />} />
