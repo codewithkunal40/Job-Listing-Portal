@@ -51,11 +51,6 @@ const Layout = ({ children }) => {
                 Profile
               </Link>
             </li>
-            <li>
-              <Link to="/job-dashboard/settings" className="menu-item">
-                Settings
-              </Link>
-            </li>
 
             <li>
               <Link to="/job-dashboard/job-seeker-list" className="menu-item">
@@ -65,6 +60,14 @@ const Layout = ({ children }) => {
             <li>
               <Link to="/job-dashboard/job-stats" className="menu-item">
                 Job Stats
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/job-dashboard/resume-seeker-upload"
+                className="menu-item"
+              >
+                Uplaod resume
               </Link>
             </li>
             <li>

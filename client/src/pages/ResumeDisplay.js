@@ -1,46 +1,55 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import "../css/ResumeDisplay.css"; // Import the CSS file for styling
 
 function ResumeDisplay() {
-  const [resumeUrl, setResumeUrl] = useState("");
-  const { id } = useParams(); // Extract the ID from the URL parameters
+  const [resumes, setResumes] = useState([]);
 
   useEffect(() => {
-    const fetchResume = async () => {
-      if (!id) {
-        console.error("User ID is undefined or not found");
-        return;
-      }
-
+    const fetchResumes = async () => {
       try {
-        const token = localStorage.getItem("token");
-        const response = await axios.get(`/api/v1/user/get-resume/${id}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-          responseType: "blob", // Ensure correct response type
-        });
-
-        const url = URL.createObjectURL(response.data);
-        setResumeUrl(url);
+        const response = await axios.get("/api/v1/user/get-all-resume");
+        const resumeData = response.data.data; // Assuming this contains the array of users with resumes
+        setResumes(resumeData);
       } catch (error) {
-        console.error("Error fetching resume:", error);
+        console.error("Error fetching resumes:", error);
       }
     };
 
-    fetchResume();
-  }, [id]);
+    fetchResumes();
+  }, []);
 
   return (
-    <div>
-      <h2>Resume</h2>
-      {resumeUrl ? (
-        <a href={resumeUrl} download="resume.pdf">
-          Download Resume
-        </a>
+    <div className="resume-display">
+      <h2>Applicant Resumes</h2>
+      {resumes.length > 0 ? (
+        <div className="resume-card-container text-center">
+          {resumes.map((user) => (
+            <div className="resume-card" key={user._id}>
+              <div className="resume-card-header">
+                <h3>
+                  {user.name} {user.lastname}
+                </h3>
+                <h2 className="resume-role">{user.role}</h2>
+              </div>
+              <div className="resume-card-body">
+                {user.resume ? (
+                  <a
+                    href={`/${user.resume}`}
+                    download
+                    className="resume-download-link"
+                  >
+                    Download Resume
+                  </a>
+                ) : (
+                  <p>No resume uploaded</p>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
       ) : (
-        <p>Loading resume...</p>
+        <p>Loading resumes...</p>
       )}
     </div>
   );

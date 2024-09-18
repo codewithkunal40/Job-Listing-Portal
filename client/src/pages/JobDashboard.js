@@ -9,6 +9,7 @@ import Settings from "./Settings";
 import Logout from "./Logout";
 import Contactform from "./Contactform";
 import JobSekkerList from "./JobSekkerList";
+import ResumeUploadSeeker from "./resumeUplaodSeeker";
 // Assuming you have a Sidebar component
 
 const JobDashboard = () => {
@@ -23,6 +24,10 @@ const JobDashboard = () => {
             <Route path="/job-stats" element={<JobStats />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/logout" element={<Logout />} />
+            <Route
+              path="/resume-seeker-upload"
+              element={<ResumeUploadSeeker />}
+            />
             <Route path="/contact" element={<Contactform />} />
           </Routes>
         </div>

@@ -1,0 +1,103 @@
+/* ResumeDisplay.css */
+
+.resume-display {
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #f9fafb; /* Soft light background for the section */
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #333;
+  font-size: 2.5rem; /* Larger heading for a more impactful look */
+  font-weight: 700;
+  font-family: "Roboto", sans-serif; /* Custom font for a modern touch */
+}
+
+.resume-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.resume-card {
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  padding: 25px;
+  width: 300px;
+  transition: all 0.4s ease-in-out;
+  border: 1px solid #e0e0e0; /* Light border for subtle definition */
+  overflow: hidden;
+}
+
+.resume-card:hover {
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  transform: translateY(-8px); /* More pronounced lift effect on hover */
+}
+
+.resume-card-header {
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+.resume-card-header h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #444;
+  font-weight: 600;
+  font-family: "Roboto", sans-serif;
+}
+
+.resume-role {
+  font-size: 0.9rem;
+  color: #777;
+  margin-top: 5px;
+}
+
+.resume-card-body {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.resume-download-link {
+  display: inline-block;
+  padding: 12px 25px;
+  background: linear-gradient(
+    135deg,
+    #007bff,
+    #00d2ff
+  ); /* Animated gradient background */
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  transition: background 0.4s, transform 0.4s, box-shadow 0.4s;
+}
+
+.resume-download-link:hover {
+  background: linear-gradient(
+    135deg,
+    #0056b3,
+    #00aaff
+  ); /* Darker gradient on hover */
+  transform: scale(1.05); /* Scaling effect on hover */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.resume-download-link:active {
+  background: linear-gradient(
+    135deg,
+    #003d80,
+    #0086cc
+  ); /* Even darker gradient on click */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}

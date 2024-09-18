@@ -194,3 +194,27 @@ export const getResumeController = async (req, res) => {
       .json({ message: "Server error", error: error.message });
   }
 };
+
+export const getallResumeController = async (req, res) => {
+  try {
+    const { resume } = req.body;
+    const response = await userModel.find(resume);
+    if (!response) {
+      res.status(500).send({
+        message: "REsume not fetched for  all  users",
+        success: false,
+      });
+    }
+    return res.status(200).send({
+      success: true,
+      message: "fetched reume succefuuly for all apllicants",
+      data: response,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400).send({
+      success: false,
+      message: "something went wrong",
+    });
+  }
+};
