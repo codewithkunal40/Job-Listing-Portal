@@ -42,6 +42,24 @@ const About = () => {
             The Job Listing Portal Team
           </em>
         </p>
+        <div className="teaminfo">
+          <p>Pratik Jojode FULL STACK DEVELOPMENT 
+            <a href="https://www.linkedin.com/in/pratik-jojode-95319726b/">LinkedIn</a>
+          </p>
+          <p>Kunal Raj Pandey FULL STACK DEVELOPMENT
+            <a href="https://www.linkedin.com/in/kunal-raj-pandey-6912a6265?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">LinkedIn</a>
+          </p>
+          <p>Atik Khan FRONTEND DEVELOPMENT
+            <a href="https://www.linkedin.com/in/atik-khan-ba0a6031b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">LinkedIn</a>
+          </p>
+          <p>Joyabrata Dewan FRONTEND DEVELOPMENT
+            <a href="https://www.linkedin.com/in/joyabrata-dewan-920567248">LinkedIn</a>
+          </p>
+          <p>Karan Roy FRONTEND DEVELOPMENT</p>
+          <p>S Balakrishnan FRONTEND DEVELOPMENT
+            <a href="https://www.linkedin.com/in/s-balakrishnan-09bbbb219/">LinkedIn</a>
+          </p>
+        </div>
       </div>
     </div>
   );
