@@ -55,7 +55,9 @@ const About = () => {
           <p>Joyabrata Dewan FRONTEND DEVELOPMENT
             <a href="https://www.linkedin.com/in/joyabrata-dewan-920567248">LinkedIn</a>
           </p>
-          <p>Karan Roy FRONTEND DEVELOPMENT</p>
+          <p>Karan Roy FRONTEND DEVELOPMENT 
+            <a href="https://www.linkedin.com/in/karanroy?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">LinkedIn</a>
+          </p>
           <p>S Balakrishnan FRONTEND DEVELOPMENT
             <a href="https://www.linkedin.com/in/s-balakrishnan-09bbbb219/">LinkedIn</a>
           </p>
