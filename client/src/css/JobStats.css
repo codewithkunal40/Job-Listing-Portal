@@ -2,7 +2,7 @@
 
 .job-stats-container {
   padding: 20px;
-  background-color: #f4f7f9; /* Light background color for the container */
+  background: #c78c8c74; /* Light background color for the container */
   border-radius: 8px; /* Rounded corners for the container */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }

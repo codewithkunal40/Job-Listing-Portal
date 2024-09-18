@@ -1,7 +1,7 @@
 /* General container for the dashboard */
 .employer-dashboard-container {
   padding: 20px;
-  background-color: #f4f4f4; /* Slightly lighter background for a softer look */
+  background-color: #ec9393; /* Slightly lighter background for a softer look */
   min-height: 100vh; /* Ensure the container fills the height of the viewport */
 }
 
