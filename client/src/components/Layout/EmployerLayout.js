@@ -65,11 +65,7 @@ const EmployerLayout = ({ children }) => {
                 Profile
               </Link>
             </li>
-            <li>
-              <Link to="/employer-dashboard/settings" className="menu-item">
-                Settings
-              </Link>
-            </li>
+
             <li>
               <Link to="/employer-dashboard/create-job" className="menu-item">
                 Create Job

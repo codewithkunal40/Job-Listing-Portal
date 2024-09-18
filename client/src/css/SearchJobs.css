@@ -3,7 +3,7 @@
   padding: 20px;
   max-width: 1200px; /* Maximum width for larger screens */
   margin: 0 auto; /* Center the container */
-  background-color: #f9f9f9; /* Light background to differentiate from page background */
+  background: #c78c8c74; /* Light background to differentiate from page background */
   border-radius: 8px; /* Rounded corners for a softer look */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
   position: relative; /* Position relative for potential future positioning of elements */

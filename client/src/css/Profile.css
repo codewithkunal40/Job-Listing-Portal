@@ -3,16 +3,17 @@
   margin: 0 auto;
   max-width: 700px;
   padding: 30px;
-  background: linear-gradient(135deg, #f7f7f7, #3a3636);
+  background: rgb(98, 87, 87);
   border-radius: 15px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
 /* Profile card */
 .profile-card {
-  background: #ffffff;
+  background: #94a7e5d0;
   border-radius: 12px;
   padding: 20px;
+  color: black;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
@@ -25,6 +26,7 @@
   font-size: 2rem;
   color: #002a6d;
   margin-bottom: 10px;
+  font-weight: 900;
 }
 
 .profile-email,
@@ -32,7 +34,7 @@
 .profile-phone,
 .profile-role {
   font-size: 1.2rem;
-  color: #555;
+  color: #070505;
   margin-bottom: 8px;
 }
 
