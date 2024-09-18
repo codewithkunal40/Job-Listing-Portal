@@ -39,6 +39,7 @@
   max-width: 90%;
   margin-left: auto;
   margin-right: auto;
+color: #fff;
 }
 
 /* Hero Buttons */
@@ -305,6 +306,9 @@
   font-size: 22px;
   text-align: center;
   color: #e7ebef; /* Matches the theme */
+}
+.openings p{
+  color: #fff;
 }
 .opportunities {
   text-align: center;
