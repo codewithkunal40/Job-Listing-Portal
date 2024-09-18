@@ -8,7 +8,7 @@ const EmployerLayout = ({ children }) => {
   const [name, setName] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [isSidebarVisible, setIsSidebarVisible] = useState(true);
+  const [isSidebarVisible, setIsSidebarVisible] = useState(false); // Start with sidebar hidden on small screens
   const { id } = useParams();
 
   useEffect(() => {
@@ -37,14 +37,15 @@ const EmployerLayout = ({ children }) => {
   }, [id]);
 
   const toggleSidebar = () => {
-    setIsSidebarVisible(!isSidebarVisible);
+    setIsSidebarVisible((prev) => !prev);
   };
 
   return (
     <div className="layout-container">
-      <aside className={`sidebar ${!isSidebarVisible ? "collapsed" : ""}`}>
+      {/* Sidebar */}
+      <aside className={`sidebar ${isSidebarVisible ? "visible" : ""}`}>
         <button className="sidebar-toggle" onClick={toggleSidebar}>
-          {isSidebarVisible ? "☰" : "✕"}
+          {isSidebarVisible ? "✕" : "☰"}
         </button>
         <h2 className="sidebar-title">
           <img src={logo} alt="Logo" />
@@ -91,7 +92,7 @@ const EmployerLayout = ({ children }) => {
             </li>
             <li>
               <Link to="/employer-dashboard/search" className="menu-item">
-                Search job
+                Search Job
               </Link>
             </li>
             <li>
@@ -118,6 +119,16 @@ const EmployerLayout = ({ children }) => {
           </ul>
         </nav>
       </aside>
+
+      {/* Top Bar */}
+      <header className="top-bar">
+        <h2 className="top-bar-title">
+          <img src={logo} alt="Logo" />
+        </h2>
+        <button className="sidebar-toggle" onClick={toggleSidebar}>
+          {isSidebarVisible ? "✕" : "☰"}
+        </button>
+      </header>
 
       <main className="main-content">
         <div className="heading text-center">
