@@ -20,7 +20,10 @@ const JobDashboard = () => {
         <div className="dashboard-content">
           <Routes>
             <Route path="/" element={<DashboardHome />} />
-            <Route path="/jobseeker-profile" element={<JobSeekerProfile />} />
+            <Route
+              path="/jobseeker-profile/:id"
+              element={<JobSeekerProfile />}
+            />
             <Route path="/job-seeker-list" element={<JobSekkerList />} />
             <Route path="/search" element={<SearchJobs />} />
             <Route path="/job-stats" element={<JobStats />} />

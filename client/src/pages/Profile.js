@@ -22,31 +22,42 @@ const Profile = () => {
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
+        if (!id) {
+          setError("User ID is missing or invalid");
+          setLoading(false);
+          return;
+        }
+
+        console.log("Fetching user profile for ID:", id);
+
         const token = localStorage.getItem("token");
         const response = await axios.get(`/api/v1/user/get-user/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
-        setUser(response.data.data);
-        setFormData({
-          name: response.data.data.name,
-          lastname: response.data.data.lastname,
-          email: response.data.data.email,
-          location: response.data.data.location,
-          phoneNumber: response.data.data.phoneNumber,
-          role: response.data.data.role,
-        });
-        setLoading(false);
+
+        if (response.data.success) {
+          setUser(response.data.data);
+          setFormData({
+            name: response.data.data.name,
+            lastname: response.data.data.lastname,
+            email: response.data.data.email,
+            location: response.data.data.location,
+            phoneNumber: response.data.data.phoneNumber,
+            role: response.data.data.role,
+          });
+        } else {
+          setError("Failed to fetch user data: " + response.data.message);
+        }
       } catch (err) {
-        setError(err.message);
+        setError("Error fetching user data: " + err.message);
+      } finally {
         setLoading(false);
       }
     };
 
-    if (id) {
-      fetchUserProfile(); // Only fetch the profile if an ID exists
-    }
+    fetchUserProfile();
   }, [id]);
 
   const handleUpdate = async () => {

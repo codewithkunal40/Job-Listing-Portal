@@ -1,24 +1,34 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
-import "../../css/EmployerLayout.css"; // Ensure this CSS file exists and contains necessary styles
+import "../../css/EmployerLayout.css";
 import logo from "../../assets/images/image.png";
 
 const EmployerLayout = ({ children }) => {
   const [name, setName] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [isSidebarVisible, setIsSidebarVisible] = useState(false); // Start with sidebar hidden on small screens
-  const { id } = useParams();
+  const [isSidebarVisible, setIsSidebarVisible] = useState(false);
+  const { id } = useParams(); // Ensure you use 'id' here
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
+        if (!id) {
+          setError("User ID is missing");
+          setLoading(false);
+          return;
+        }
+
+        // Log the ID to ensure it's correct
+        console.log("Fetching user data for ID:", id);
+
         const response = await axios.get(`/api/v1/user/get-user/${id}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         });
+
         if (response.data.success) {
           setName(response.data.data.name);
         } else {
@@ -34,7 +44,7 @@ const EmployerLayout = ({ children }) => {
     };
 
     fetchUserData();
-  }, [id]);
+  }, [id]); // Ensure 'id' is a dependency
 
   const toggleSidebar = () => {
     setIsSidebarVisible((prev) => !prev);
@@ -65,7 +75,6 @@ const EmployerLayout = ({ children }) => {
                 Profile
               </Link>
             </li>
-
             <li>
               <Link to="/employer-dashboard/create-job" className="menu-item">
                 Create Job

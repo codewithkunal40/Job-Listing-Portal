@@ -79,8 +79,37 @@ export const getUserController = async (req, res) => {
 
 export const getUserOnIdController = async (req, res) => {
   try {
-    const userId = req.params._id;
-    const user = await userModel.findOne({ userId });
+    // Fetch the id from route params
+    const userId = req.params.id;
+
+    // Check if userId exists and is valid
+    if (!userId) {
+      return res.status(400).send({
+        success: false,
+        message: "User ID is required",
+      });
+    }
+
+    // Check if the userId is a valid MongoDB ObjectId
+    if (!userId.match(/^[0-9a-fA-F]{24}$/)) {
+      return res.status(400).send({
+        success: false,
+        message: "Invalid User ID format",
+      });
+    }
+
+    // Fetch the user based on the valid id
+    const user = await userModel.findOne({ _id: userId });
+
+    // If user is not found
+    if (!user) {
+      return res.status(404).send({
+        success: false,
+        message: "User not found",
+      });
+    }
+
+    // If the user is found, send the response
     return res.status(200).send({
       success: true,
       message: "User fetched on the basis of Id",
@@ -90,7 +119,7 @@ export const getUserOnIdController = async (req, res) => {
     console.log(error);
     res.status(500).send({
       success: false,
-      message: "Caanot fetch the current user",
+      message: "Cannot fetch the current user",
       error,
     });
   }
@@ -159,6 +188,7 @@ export const uploadResumeController = async (req, res) => {
 };
 
 import { fileURLToPath } from "url";
+import mongoose from "mongoose";
 
 // Manually define __dirname
 const __filename = fileURLToPath(import.meta.url);
@@ -216,5 +246,83 @@ export const getallResumeController = async (req, res) => {
       success: false,
       message: "something went wrong",
     });
+  }
+};
+
+export const getUserByNameController = async (req, res) => {
+  try {
+    const { name } = req.params;
+
+    // Check if name is provided
+    if (!name) {
+      return res.status(400).json({
+        success: false,
+        message: "User name is required",
+      });
+    }
+
+    // Fetch the user based on the name
+    const user = await userModel.findOne({ name });
+
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "User fetched successfully",
+      data: user,
+    });
+  } catch (error) {
+    console.error("Error fetching user:", error);
+    res.status(500).json({
+      success: false,
+      message: "Server error",
+      error: error.message,
+    });
+  }
+};
+
+// Controller to fetch job seeker profile by ID
+export const getJobSeekerProfile = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    // Check if the ID is valid
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Invalid User ID format" });
+    }
+
+    // Find the user by ID and role
+    const user = await userModel.findOne({ _id: id, role: "job seeker" });
+
+    if (!user) {
+      return res
+        .status(404)
+        .json({ success: false, message: "Job Seeker not found" });
+    }
+
+    // Return the job seeker profile
+    res.status(200).json({
+      success: true,
+      data: {
+        _id: user._id,
+        name: user.name,
+        lastname: user.lastname,
+        email: user.email,
+        location: user.location,
+        phoneNumber: user.phoneNumber,
+        resume: user.resume,
+        role: user.role,
+      },
+    });
+  } catch (error) {
+    console.error("Error fetching job seeker profile:", error);
+    res.status(500).json({ success: false, message: "Server Error" });
   }
 };

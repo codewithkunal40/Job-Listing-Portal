@@ -47,7 +47,10 @@ const Layout = ({ children }) => {
               </Link>
             </li>
             <li>
-              <Link to="/job-dashboard/jobseeker-profile" className="menu-item">
+              <Link
+                to="/job-dashboard/jobseeker-profile/:id"
+                className="menu-item"
+              >
                 Profile
               </Link>
             </li>

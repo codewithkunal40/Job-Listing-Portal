@@ -3,7 +3,9 @@ import { userAuth } from "../middlewares/authMiddlware.js";
 import {
   deleteUserController,
   getallResumeController,
+  getJobSeekerProfile,
   getResumeController,
+  getUserByNameController,
   getUserController,
   getUserOnIdController,
   updateUserController,
@@ -163,5 +165,6 @@ router.post("/upload-resume", uploadResume, userAuth, uploadResumeController);
 router.delete("/delete-user/:id", userAuth, deleteUserController);
 router.get("/get-resume/:id", userAuth, getResumeController);
 router.get("/get-all-resume", getallResumeController);
-
+router.get("/get-user-name/:name", userAuth, getUserByNameController);
+router.get("/job-seeker/:id", getJobSeekerProfile);
 export default router;
