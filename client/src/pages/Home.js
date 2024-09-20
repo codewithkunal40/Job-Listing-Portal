@@ -14,7 +14,7 @@ const Home = () => {
           Connect with top employers and find your next career move today.
         </p>
         <div className="hero-buttons">
-          <Link to="/jobs" className="btn-primary">
+          <Link to="/jobdashboard" className="btn-primary">
             Browse Jobs
           </Link>
           <Link to="/register" className="btn-secondary">
@@ -29,7 +29,7 @@ const Home = () => {
             Streamline your application process and apply to the best job
             opportunities. Quickly and easily get noticed by top employers.
           </p>
-          <Link to="/apply" className="card-link">
+          <Link to="/register" className="card-link">
             Apply Now
           </Link>
         </div>
@@ -40,7 +40,7 @@ const Home = () => {
             industry, and job type. Find exactly what you’re looking for with
             precision.
           </p>
-          <Link to="/search" className="card-link">
+          <Link to="/resources" className="card-link">
             Search Jobs
           </Link>
         </div>
@@ -148,7 +148,8 @@ const Home = () => {
       <div className="opportunities">
         <p>Find your best opportunities today</p>
         <button className="btn">Explore more</button>
-        <button className="btn">Get started</button>
+      
+        <button><Link to="/register">Get Started</Link></button>
         <button></button>
       </div>
     </div>
