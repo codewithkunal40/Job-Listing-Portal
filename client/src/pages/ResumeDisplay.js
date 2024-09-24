@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "../css/ResumeDisplay.css"; // Import the CSS file for styling
+import "../css/ResumeDisplay.css";
 
 function ResumeDisplay() {
   const [resumes, setResumes] = useState([]);
@@ -9,7 +9,7 @@ function ResumeDisplay() {
     const fetchResumes = async () => {
       try {
         const response = await axios.get("/api/v1/user/get-all-resume");
-        const resumeData = response.data.data; // Assuming this contains the array of users with resumes
+        const resumeData = response.data.data; 
         setResumes(resumeData);
       } catch (error) {
         console.error("Error fetching resumes:", error);

@@ -139,8 +139,6 @@ const EmployerLayout = ({ children }) => {
         <div className="heading text-center">
           {loading ? (
             <p>Loading user data...</p>
-          ) : error ? (
-            <p className="error">{error}</p>
           ) : (
             <h1>Welcome to the Employer Dashboard, {name || "User"}</h1>
           )}

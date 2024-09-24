@@ -71,7 +71,7 @@ app.use(errorMiddleware);
 app.get("/", (req, res) => {
   res.send("<h1>Welcome to Job Application</h1>");
 });
-
+    
 const PORT = process.env.PORT || 8080;
 
 // listen
@@ -81,3 +81,4 @@ app.listen(PORT, () => {
       .bgBlack.white
   );
 });
+  
